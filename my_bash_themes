@@ -1,0 +1,5 @@
+
+
+# export PS1="\[\033[38;5;98m\]\u\[$(tput sgr0)\]@\h\[$(tput sgr0)\]\[\033[38;5;160m\][\w]\[$(tput sgr0)\]\[\033[38;5;10m\]\$(git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/')\[$(tput sgr0)\]\n\[$(tput sgr0)\]\[\033[38;5;11m\]>\[$(tput sgr0)\] \[$(tput sgr0)\]"
+
+eval "$(oh-my-posh --init --shell bash --config ~/.poshthemes/mytheme2.omp.json)"
