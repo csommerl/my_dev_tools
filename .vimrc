@@ -18,7 +18,7 @@ highlight ColorColumn ctermbg=lightblue guibg=black
 set hlsearch
 set showcmd
 set ai "set autoindent
-set scrolloff=2 "keep at least 2 lines of context
+"set scrolloff=2 "keep at least 2 lines of context
 set smartindent
 filetype indent on
 autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
