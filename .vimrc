@@ -1,4 +1,4 @@
-"colorscheme slate
+colorscheme slate
 set nocompatible
 filetype on
 filetype plugin on
@@ -14,7 +14,7 @@ set nowrap
 set scrolloff=8
 set incsearch
 set colorcolumn=80
-highlight ColorColumn ctermbg=lightblue guibg=black
+highlight ColorColumn ctermbg=white guibg=black
 set hlsearch
 set showcmd
 set ai "set autoindent
