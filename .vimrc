@@ -38,4 +38,5 @@ if executable(s:clip)
     augroup END
 endif
 
-nnoremap <C-d> :sh<CR> "Switch to and from shell with ctrl d
+"Switch to and from shell with ctrl d
+nnoremap <C-d> :sh<CR>
