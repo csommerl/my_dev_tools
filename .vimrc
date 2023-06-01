@@ -1,7 +1,8 @@
-colorscheme slate
+"colorscheme slate
 set nocompatible
 filetype on
 filetype plugin on
+set belloff=all
 set signcolumn=auto
 set syntax=on
 set cmdheight=2
@@ -17,17 +18,18 @@ set colorcolumn=80
 highlight ColorColumn ctermbg=white guibg=black
 set hlsearch
 set showcmd
-set ai "set autoindent
-"set scrolloff=2 "keep at least 2 lines of context
+
+" Indentation
+set autoindent "set autoindent
 set smartindent
 filetype indent on
 autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
 autocmd FileType python setlocal shiftwidth=4 tabstop=4
 
-" change cursor for mode
-let &t_SI = "\<Esc>[6 q"
+" change cursor for mode: https://vim.fandom.com/wiki/Change_cursor_shape_in_different_modes
+let &t_SI = "\<Esc>[5 q"
 let &t_SR = "\<Esc>[4 q"
-let &t_EI = "\<Esc>[2 q"
+let &t_EI = "\<Esc>[1 q"
 
 " WSL yank support from https://www.reddit.com/r/bashonubuntuonwindows/comments/be2q3l/comment/el2vx7u/
 let s:clip = '/mnt/c/Windows/System32/clip.exe'  " change this path according to your mount point
