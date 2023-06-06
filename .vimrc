@@ -16,6 +16,8 @@ set incsearch
 set colorcolumn=80
 highlight ColorColumn ctermbg=white guibg=black
 set hlsearch
+hi Search ctermbg=lightgreen
+hi Search ctermfg=black
 set showcmd
 
 " Indentation
@@ -44,10 +46,12 @@ nnoremap <C-d> :sh<CR>
 
 " Word Wrap for Markdown
 autocmd FileType markdown setlocal wrap
+autocmd FileType text setlocal wrap
 
 
 "set cmdheight=2
 
+" Below from https://www.reddit.com/r/vim/comments/gexi6/a_smarter_statusline_code_in_comments/
 set laststatus=2
 hi StatColor guibg=#95e454 guifg=black ctermbg=lightgreen ctermfg=black
 hi Modified guibg=orange guifg=black ctermbg=lightred ctermfg=black
