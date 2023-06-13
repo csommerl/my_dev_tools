@@ -1,17 +1,17 @@
-colorscheme slate
 set nocompatible
+set syntax=on
+colorscheme slate
 filetype on
 filetype plugin on
 set belloff=all
 set signcolumn=auto
-set syntax=on
 set shortmess=a
 set number
 set relativenumber
 set hidden
 set expandtab
 set nowrap
-set scrolloff=8
+set scrolloff=5
 set incsearch
 set colorcolumn=80
 highlight ColorColumn ctermbg=white guibg=black
@@ -26,6 +26,7 @@ set smartindent
 filetype indent on
 autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
 autocmd FileType python setlocal shiftwidth=4 tabstop=4
+autocmd FileType markdown setlocal shiftwidth=2 tabstop=2
 
 " change cursor for mode: https://vim.fandom.com/wiki/Change_cursor_shape_in_different_modes
 let &t_SI = "\<Esc>[5 q"
