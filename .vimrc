@@ -12,12 +12,16 @@ set hidden
 set expandtab
 set nowrap
 set scrolloff=5
-set incsearch
+
 set colorcolumn=80
 highlight ColorColumn ctermbg=white guibg=black
+
 set hlsearch
-hi Search ctermbg=lightgreen
-hi Search ctermfg=black
+hi Search ctermbg=cyan ctermfg=black
+
+set incsearch
+hi IncSearch cterm=NONE ctermbg=cyan ctermfg=black
+
 set showcmd
 
 " Indentation
