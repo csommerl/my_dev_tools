@@ -98,3 +98,16 @@ endfunction
 
 au InsertEnter * call InsertStatuslineColor(v:insertmode)
 au InsertLeave * hi StatColor guibg=#95e454 guifg=black ctermbg=lightgreen ctermfg=black
+
+" FOLDING from https://alldrops.info/posts/vim-drops/2018-04-25_javascript-folding-on-vim/
+set foldmethod=syntax "syntax highlighting items specify folds
+set foldcolumn=1 "defines 1 col at window left, to indicate folding
+let javaScript_fold=1 "activate folding by JS syntax
+set foldlevelstart=99 "start file with all folds opened
+
+" https://www.benpickles.com/articles/88-vim-syntax-highlight-markdown-code-blocks
+let g:markdown_fenced_languages = ['javascript', 'js=javascript', 'html', 'css']
+
+" https://vi.stackexchange.com/questions/4669/markdown-how-to-syntax-highlight-bold-and-italic-in-different-color-than-normal
+highlight htmlBold gui=bold guifg=#af0000 ctermfg=124
+highlight htmlItalic gui=italic guifg=#ff8700 ctermfg=214
