@@ -1,6 +1,10 @@
 set nocompatible
-set syntax=on
-colorscheme slate
+syntax enable "set syntax=on
+"colorscheme slate
+
+"keep terminal background color
+hi Normal guibg=NONE ctermbg=NONE
+
 filetype on
 filetype plugin on
 set belloff=all
@@ -11,7 +15,7 @@ set relativenumber
 set hidden
 set expandtab
 set nowrap
-set scrolloff=5
+set scrolloff=6
 
 set colorcolumn=80
 highlight ColorColumn ctermbg=white guibg=black
@@ -108,6 +112,14 @@ set foldlevelstart=99 "start file with all folds opened
 " https://www.benpickles.com/articles/88-vim-syntax-highlight-markdown-code-blocks
 let g:markdown_fenced_languages = ['javascript', 'js=javascript', 'html', 'css']
 
-" https://vi.stackexchange.com/questions/4669/markdown-how-to-syntax-highlight-bold-and-italic-in-different-color-than-normal
-highlight htmlBold gui=bold guifg=#af0000 ctermfg=124
-highlight htmlItalic gui=italic guifg=#ff8700 ctermfg=214
+" Markdown bold & italics highlighting from https://vi.stackexchange.com/questions/4669/markdown-how-to-syntax-highlight-bold-and-italic-in-different-color-than-normal
+highlight htmlBold gui=bold guifg=#af0000 ctermfg=yellow
+highlight htmlItalic gui=italic guifg=#ff8700 ctermfg=red
+
+" possible code snippet https://raw.githubusercontent.com/tpope/vim-markdown/master/syntax/markdown.vim
+highlight markdownCode guifg=#ff8700 ctermfg=green
+highlight markdownCodeDelimiter guifg=#ff8700 ctermfg=green
+
+" https://stackoverflow.com/questions/45866451/put-the-search-results-at-the-top-of-the-screen-in-vi
+nnoremap n nzt
+nnoremap N Nzt
