@@ -15,6 +15,7 @@ set relativenumber
 set hidden
 set expandtab
 set nowrap
+set nowrapscan
 set scrolloff=6
 
 set colorcolumn=80
