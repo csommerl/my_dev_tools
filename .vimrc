@@ -1,6 +1,6 @@
 set nocompatible
 syntax enable "set syntax=on
-"colorscheme slate
+colorscheme slate
 
 "keep terminal background color
 hi Normal guibg=NONE ctermbg=NONE
@@ -57,10 +57,9 @@ nnoremap <C-d> :sh<CR>
 autocmd FileType markdown setlocal wrap
 autocmd FileType text setlocal wrap
 
-
 "set cmdheight=2
 
-" Below from https://www.reddit.com/r/vim/comments/gexi6/a_smarter_statusline_code_in_comments/
+""" Below from https://www.reddit.com/r/vim/comments/gexi6/a_smarter_statusline_code_in_comments/
 set laststatus=2
 hi StatColor guibg=#95e454 guifg=black ctermbg=lightgreen ctermfg=black
 hi Modified guibg=orange guifg=black ctermbg=lightred ctermfg=black
@@ -102,6 +101,8 @@ endfunction
 
 au InsertEnter * call InsertStatuslineColor(v:insertmode)
 au InsertLeave * hi StatColor guibg=#95e454 guifg=black ctermbg=lightgreen ctermfg=black
+
+""" end statusline
 
 " FOLDING from https://alldrops.info/posts/vim-drops/2018-04-25_javascript-folding-on-vim/
 set foldmethod=syntax "syntax highlighting items specify folds
