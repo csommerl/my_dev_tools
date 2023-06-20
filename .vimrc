@@ -10,8 +10,12 @@ filetype plugin on
 set belloff=all
 set signcolumn=auto
 set shortmess=a
+
+"Line numbering
 set number
 set relativenumber
+let g:netrw_bufsettings = 'noma nomod nu nowrap ro nobl'
+
 set hidden
 set expandtab
 set nowrap

@@ -1,4 +1,5 @@
 Search r/vim for things
+use plugins with nvim
 
 add comment to vimrc
 - https://chrisyeh96.github.io/2017/12/18/vimrc.html
