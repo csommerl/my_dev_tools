@@ -129,3 +129,14 @@ highlight markdownCodeDelimiter guifg=#ff8700 ctermfg=green
 " https://stackoverflow.com/questions/45866451/put-the-search-results-at-the-top-of-the-screen-in-vi
 nnoremap n nzt
 nnoremap N Nzt
+
+"Key mappings
+"" Backspace to buffer
+nnoremap <BS> <C-^>zt
+noremap <S-BS> :bnext<cr>
+
+"Leader
+nnoremap <SPACE> <Nop>
+let mapleader=" "
+"pressing leader b will list the available buffers and prepare :b for you.
+nnoremap <Leader>b :ls<CR>:b<Space>
