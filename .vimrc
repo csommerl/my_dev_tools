@@ -134,9 +134,15 @@ nnoremap N Nzt
 "" Backspace to buffer
 nnoremap <BS> <C-^>zt
 noremap <S-BS> :bnext<cr>
+"Enter to colon
+nnoremap <CR><CR> <CR>
+nnoremap <CR> :
 
-"Leader
+"Leader to space
 nnoremap <SPACE> <Nop>
 let mapleader=" "
-"pressing leader b will list the available buffers and prepare :b for you.
+"leader b = list the available buffers and prepare :b for you.
 nnoremap <Leader>b :ls<CR>:b<Space>
+"leader s = write
+nnoremap <Leader>s :w<CR>
+
