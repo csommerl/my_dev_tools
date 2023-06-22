@@ -118,10 +118,6 @@ highlight htmlItalic gui=italic guifg=#ff8700 ctermfg=red
 highlight markdownCode guifg=#ff8700 ctermfg=green
 highlight markdownCodeDelimiter guifg=#ff8700 ctermfg=green
 
-" https://stackoverflow.com/questions/45866451/put-the-search-results-at-the-top-of-the-screen-in-vi
-nnoremap n nzt
-nnoremap N Nzt
-
 "Key mappings
 "" Backspace to buffer
 nnoremap <BS> <C-^>zt
@@ -131,12 +127,15 @@ nnoremap <CR><CR> <CR>
 nnoremap <CR> :
 " In the quickfix window, <CR> is used to jump to the error under the cursor, so undefine the mapping there.
 autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
-"PageUp & PageDown
-nnoremap <PageUp> <C-u>
-nnoremap <PageDown> <C-d>
-"H and L
-nnoremap H ^
-nnoremap L $
+"PageUp & PageDown in Normal, Visual, Select, Operator-pending
+noremap <PageUp> <C-u>
+noremap <PageDown> <C-d>
+"H and L to start and end in Normal, Visual, Select, Operator-pending
+noremap H ^
+noremap L $
+" https://stackoverflow.com/questions/45866451/put-the-search-results-at-the-top-of-the-screen-in-vi
+nnoremap n nzt
+nnoremap N Nzt
 
 "Leader to space
 nnoremap <SPACE> <Nop>
@@ -147,3 +146,5 @@ nnoremap <Leader>b :ls<CR>:b<Space>
 nnoremap <Leader>s :w<CR>
 "leader d = shell
 nnoremap <Leader>d :sh<CR>
+"leader e = explorer
+nnoremap <Leader>e :e <C-d>
