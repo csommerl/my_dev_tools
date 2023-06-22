@@ -29,3 +29,9 @@ Color scheme
 - https://github.com/altercation/vim-colors-solarized
 - https://vi.stackexchange.com/questions/4669/markdown-how-to-syntax-highlight-bold-and-italic-in-different-color-than-normal
 - https://www.benpickles.com/articles/88-vim-syntax-highlight-markdown-code-blocks
+
+" change cursor for mode: https://vim.fandom.com/wiki/Change_cursor_shape_in_different_modes
+let &t_SI = "\<Esc>[5 q"
+let &t_SR = "\<Esc>[4 q"
+let &t_EI = "\<Esc>[1 q"
+

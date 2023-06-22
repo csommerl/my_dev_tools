@@ -41,11 +41,6 @@ autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
 autocmd FileType python setlocal shiftwidth=4 tabstop=4
 autocmd FileType markdown setlocal shiftwidth=2 tabstop=2
 
-" change cursor for mode: https://vim.fandom.com/wiki/Change_cursor_shape_in_different_modes
-let &t_SI = "\<Esc>[5 q"
-let &t_SR = "\<Esc>[4 q"
-let &t_EI = "\<Esc>[1 q"
-
 " WSL yank support from https://www.reddit.com/r/bashonubuntuonwindows/comments/be2q3l/comment/el2vx7u/
 let s:clip = '/mnt/c/Windows/System32/clip.exe'  " change this path according to your mount point
 if executable(s:clip)
@@ -54,9 +49,6 @@ if executable(s:clip)
         autocmd TextYankPost * if v:event.operator ==# 'y' | call system(s:clip, @0) | endif
     augroup END
 endif
-
-"Switch to and from shell with ctrl d
-nnoremap <C-d> :sh<CR>
 
 " Word Wrap for Markdown
 autocmd FileType markdown setlocal wrap
@@ -137,6 +129,14 @@ noremap <S-BS> :bnext<cr>
 "Enter to colon
 nnoremap <CR><CR> <CR>
 nnoremap <CR> :
+" In the quickfix window, <CR> is used to jump to the error under the cursor, so undefine the mapping there.
+autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
+"PageUp & PageDown
+nnoremap <PageUp> <C-u>
+nnoremap <PageDown> <C-d>
+"H and L
+nnoremap H ^
+nnoremap L $
 
 "Leader to space
 nnoremap <SPACE> <Nop>
@@ -145,4 +145,5 @@ let mapleader=" "
 nnoremap <Leader>b :ls<CR>:b<Space>
 "leader s = write
 nnoremap <Leader>s :w<CR>
-
+"leader d = shell
+nnoremap <Leader>d :sh<CR>
