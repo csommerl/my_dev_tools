@@ -1,47 +1,107 @@
-set nocompatible
-syntax enable "set syntax=on
-colorscheme slate
-
-"keep terminal background color
-hi Normal guibg=NONE ctermbg=NONE
-
-filetype on
-filetype plugin on
-set belloff=all
-set signcolumn=auto
-set shortmess=a
-
-"Line numbering
-set number
-set relativenumber
-let g:netrw_bufsettings = 'noma nomod nu nowrap ro nobl'
-
+" Uncategorized Settings
 set hidden
 set expandtab
 set nowrap
 set nowrapscan
 set scrolloff=6
+" set cmdheight=2
 
+"------------------------------------------------------------------------------
+
+" Basic Settings
+
+" Turn off backwards compatibility with vi
+set nocompatible
+
+" Enable file type detection
+filetype on
+
+" Enable plugins for file types
+filetype plugin on
+
+" No sound on errors
+set belloff=all
+
+"------------------------------------------------------------------------------
+
+" Appearance
+
+" Syntax highlighting
+syntax enable
+
+" Show commands in bottom right
+set showcmd
+
+" Color theme
+colorscheme slate
+
+" Keep terminal background color
+hi Normal guibg=NONE ctermbg=NONE
+
+" Sign column
+set signcolumn=auto
+
+" Avoid all the |hit-enter| prompts caused by file messages
+set shortmess=a
+
+" Show column marking 80 character length
 set colorcolumn=80
 highlight ColorColumn ctermbg=white guibg=black
 
-set hlsearch
-hi Search ctermbg=cyan ctermfg=black
+" Word Wrap for Markdown and text files
+autocmd FileType markdown setlocal wrap
+autocmd FileType text setlocal wrap
 
-set incsearch
-hi IncSearch cterm=NONE ctermbg=cyan ctermfg=black
+"------------------------------------------------------------------------------
 
-set showcmd
+" Line Numbering
+
+" Show line numbers
+set number
+
+" Show relative line numbers
+set relativenumber
+
+" Line numbering when browsing directories
+let g:netrw_bufsettings = 'noma nomod nu nowrap ro nobl'
+
+"------------------------------------------------------------------------------
 
 " Indentation
-set autoindent "set autoindent
-set smartindent
+
+" Set to indent based on filetype
 filetype indent on
+set smartindent
+
+" Settings for filetypes
 autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
 autocmd FileType python setlocal shiftwidth=4 tabstop=4
 autocmd FileType markdown setlocal shiftwidth=2 tabstop=2
 
-" WSL yank support from https://www.reddit.com/r/bashonubuntuonwindows/comments/be2q3l/comment/el2vx7u/
+"------------------------------------------------------------------------------
+
+" Search Settings
+
+" Highlight matches as the search term is being typed
+set incsearch
+hi IncSearch cterm=NONE ctermbg=cyan ctermfg=black
+
+" Highlight search matches
+set hlsearch
+hi Search ctermbg=cyan ctermfg=black
+
+" Add case ignore except when title case
+" 
+"
+"
+"
+
+"------------------------------------------------------------------------------
+
+" WSL Settings
+
+" WSL yank support 
+" from https://www.reddit.com/r/bashonubuntuonwindows/comments/be2q3l/comment/el2vx7u/
 let s:clip = '/mnt/c/Windows/System32/clip.exe'  " change this path according to your mount point
 if executable(s:clip)
     augroup WSLYank
@@ -50,13 +110,11 @@ if executable(s:clip)
     augroup END
 endif
 
-" Word Wrap for Markdown
-autocmd FileType markdown setlocal wrap
-autocmd FileType text setlocal wrap
+"------------------------------------------------------------------------------
 
-"set cmdheight=2
+" Statusline
 
-""" Below from https://www.reddit.com/r/vim/comments/gexi6/a_smarter_statusline_code_in_comments/
+" from https://www.reddit.com/r/vim/comments/gexi6/a_smarter_statusline_code_in_comments/
 set laststatus=2
 hi StatColor guibg=#95e454 guifg=black ctermbg=lightgreen ctermfg=black
 hi Modified guibg=orange guifg=black ctermbg=lightred ctermfg=black
@@ -99,52 +157,85 @@ endfunction
 au InsertEnter * call InsertStatuslineColor(v:insertmode)
 au InsertLeave * hi StatColor guibg=#95e454 guifg=black ctermbg=lightgreen ctermfg=black
 
-""" end statusline
+"------------------------------------------------------------------------------
 
-" FOLDING from https://alldrops.info/posts/vim-drops/2018-04-25_javascript-folding-on-vim/
+" Folding
+
+" JavaScript folding
+" from https://alldrops.info/posts/vim-drops/2018-04-25_javascript-folding-on-vim/
 set foldmethod=syntax "syntax highlighting items specify folds
 set foldcolumn=1 "defines 1 col at window left, to indicate folding
 let javaScript_fold=1 "activate folding by JS syntax
 set foldlevelstart=99 "start file with all folds opened
 
-" https://www.benpickles.com/articles/88-vim-syntax-highlight-markdown-code-blocks
+"------------------------------------------------------------------------------
+
+" Markdown
+
+" Apply syntax highlighting within code blocks
+" from https://www.benpickles.com/articles/88-vim-syntax-highlight-markdown-code-blocks
 let g:markdown_fenced_languages = ['javascript', 'js=javascript', 'html', 'css']
 
-" Markdown bold & italics highlighting from https://vi.stackexchange.com/questions/4669/markdown-how-to-syntax-highlight-bold-and-italic-in-different-color-than-normal
+" Highlighting for bold & italics
+" from https://vi.stackexchange.com/questions/4669/markdown-how-to-syntax-highlight-bold-and-italic-in-different-color-than-normal
 highlight htmlBold gui=bold guifg=#af0000 ctermfg=yellow
 highlight htmlItalic gui=italic guifg=#ff8700 ctermfg=red
 
-" possible code snippet https://raw.githubusercontent.com/tpope/vim-markdown/master/syntax/markdown.vim
+" Highlighting for code snippets
+" from https://raw.githubusercontent.com/tpope/vim-markdown/master/syntax/markdown.vim
 highlight markdownCode guifg=#ff8700 ctermfg=green
 highlight markdownCodeDelimiter guifg=#ff8700 ctermfg=green
 
-"Key mappings
-"" Backspace to buffer
+"------------------------------------------------------------------------------
+
+" Key Mappings
+
+" Backspace to buffer
 nnoremap <BS> <C-^>zt
 noremap <S-BS> :bnext<cr>
-"Enter to colon
+
+" Enter to colon
 nnoremap <CR><CR> <CR>
 nnoremap <CR> :
+
 " In the quickfix window, <CR> is used to jump to the error under the cursor, so undefine the mapping there.
 autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
-"PageUp & PageDown in Normal, Visual, Select, Operator-pending
+
+" PageUp & PageDown in Normal, Visual, Select, Operator-pending
 noremap <PageUp> <C-u>
 noremap <PageDown> <C-d>
-"H and L to start and end in Normal, Visual, Select, Operator-pending
+
+" H and L to start and end in Normal, Visual, Select, Operator-pending
 noremap H ^
 noremap L $
-" https://stackoverflow.com/questions/45866451/put-the-search-results-at-the-top-of-the-screen-in-vi
+
+" put next and previous search results at top of screen
+" from https://stackoverflow.com/questions/45866451/put-the-search-results-at-the-top-of-the-screen-in-vi
 nnoremap n nzt
 nnoremap N Nzt
 
-"Leader to space
+"------------------------------------------------------------------------------
+
+"Leader Mappings
+
+" Leader to space
 nnoremap <SPACE> <Nop>
 let mapleader=" "
-"leader b = list the available buffers and prepare :b for you.
+
+" leader b = list the available buffers and prepare :b for you.
 nnoremap <Leader>b :ls<CR>:b<Space>
-"leader s = write
+
+" leader s = write
 nnoremap <Leader>s :w<CR>
-"leader d = shell
+
+" leader d = shell
 nnoremap <Leader>d :sh<CR>
-"leader e = explorer
+
+" leader e = explorer
 nnoremap <Leader>e :e <C-d>
+
+" leader q = quit
+nnoremap <Leader>q :q<CR>
+
+" leader f = show ex command history
+nnoremap <Leader>f : <C-f>
