@@ -1,5 +1,4 @@
-" Uncategorized Settings
-set hidden
+" UNCATEGORIZED SETTINGS
 set expandtab
 set nowrap
 set nowrapscan
@@ -8,7 +7,7 @@ set scrolloff=6
 
 "------------------------------------------------------------------------------
 
-" Basic Settings
+" GENERAL
 
 " Turn off backwards compatibility with vi
 set nocompatible
@@ -19,12 +18,15 @@ filetype on
 " Enable plugins for file types
 filetype plugin on
 
+" Hides instead of discarding)unsaved files when opening a new buffer
+set hidden
+
 " No sound on errors
 set belloff=all
 
 "------------------------------------------------------------------------------
 
-" Appearance
+" APPEARANCE
 
 " Syntax highlighting
 syntax enable
@@ -54,7 +56,7 @@ autocmd FileType text setlocal wrap
 
 "------------------------------------------------------------------------------
 
-" Line Numbering
+" LINE NUMBERING
 
 " Show line numbers
 set number
@@ -67,7 +69,7 @@ let g:netrw_bufsettings = 'noma nomod nu nowrap ro nobl'
 
 "------------------------------------------------------------------------------
 
-" Indentation
+" INDENTATION
 
 " Set to indent based on filetype
 filetype indent on
@@ -80,7 +82,7 @@ autocmd FileType markdown setlocal shiftwidth=2 tabstop=2
 
 "------------------------------------------------------------------------------
 
-" Search Settings
+" SEARCH SETTINGS
 
 " Highlight matches as the search term is being typed
 set incsearch
@@ -90,15 +92,12 @@ hi IncSearch cterm=NONE ctermbg=cyan ctermfg=black
 set hlsearch
 hi Search ctermbg=cyan ctermfg=black
 
-" Add case ignore except when title case
-" 
-"
-"
-"
+" Ignore case in search except when typing capital characters 
+set ignorecase smartcase
 
 "------------------------------------------------------------------------------
 
-" WSL Settings
+" WSL SETTINGS
 
 " WSL yank support 
 " from https://www.reddit.com/r/bashonubuntuonwindows/comments/be2q3l/comment/el2vx7u/
@@ -112,7 +111,7 @@ endif
 
 "------------------------------------------------------------------------------
 
-" Statusline
+" STATUSLINE
 
 " from https://www.reddit.com/r/vim/comments/gexi6/a_smarter_statusline_code_in_comments/
 set laststatus=2
@@ -159,18 +158,18 @@ au InsertLeave * hi StatColor guibg=#95e454 guifg=black ctermbg=lightgreen cterm
 
 "------------------------------------------------------------------------------
 
-" Folding
+" FOLDING
 
 " JavaScript folding
 " from https://alldrops.info/posts/vim-drops/2018-04-25_javascript-folding-on-vim/
-set foldmethod=syntax "syntax highlighting items specify folds
-set foldcolumn=1 "defines 1 col at window left, to indicate folding
-let javaScript_fold=1 "activate folding by JS syntax
-set foldlevelstart=99 "start file with all folds opened
+set foldmethod=syntax  " syntax highlighting items specify folds
+set foldcolumn=1       " defines 1 col at window left, to indicate folding
+let javaScript_fold=1  " activate folding by JS syntax
+set foldlevelstart=99  " start file with all folds opened
 
 "------------------------------------------------------------------------------
 
-" Markdown
+" MARKDOWN
 
 " Apply syntax highlighting within code blocks
 " from https://www.benpickles.com/articles/88-vim-syntax-highlight-markdown-code-blocks
@@ -188,24 +187,22 @@ highlight markdownCodeDelimiter guifg=#ff8700 ctermfg=green
 
 "------------------------------------------------------------------------------
 
-" Key Mappings
+" KEY MAPPINGS
 
 " Backspace to buffer
 nnoremap <BS> <C-^>zt
 noremap <S-BS> :bnext<cr>
 
-" Enter to colon
+" Enter to colon, except in quickfix
 nnoremap <CR><CR> <CR>
 nnoremap <CR> :
-
-" In the quickfix window, <CR> is used to jump to the error under the cursor, so undefine the mapping there.
 autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
 
-" PageUp & PageDown in Normal, Visual, Select, Operator-pending
+" PageUp & PageDown to half up & down in Normal, Visual, Select, Operator-pending
 noremap <PageUp> <C-u>
 noremap <PageDown> <C-d>
 
-" H and L to start and end in Normal, Visual, Select, Operator-pending
+" H and L to start and end of line in Normal, Visual, Select, Operator-pending
 noremap H ^
 noremap L $
 
@@ -216,7 +213,7 @@ nnoremap N Nzt
 
 "------------------------------------------------------------------------------
 
-"Leader Mappings
+" LEADER MAPPINGS
 
 " Leader to space
 nnoremap <SPACE> <Nop>
@@ -225,17 +222,22 @@ let mapleader=" "
 " leader b = list the available buffers and prepare :b for you.
 nnoremap <Leader>b :ls<CR>:b<Space>
 
-" leader s = write
-nnoremap <Leader>s :w<CR>
-
 " leader d = shell
 nnoremap <Leader>d :sh<CR>
 
 " leader e = explorer
 nnoremap <Leader>e :e <C-d>
 
+" leader f = show ex command history
+nnoremap <Leader>f : <C-f>
+
+" leader h = toggle search highlighting
+" https://stackoverflow.com/questions/9054780/how-to-toggle-vims-search-highlight-visibility-without-disabling-it
+let hlstate=0
+nnoremap <Leader>h :if (hlstate == 0) \| nohlsearch \| else \| set hlsearch \| endif \| let hlstate=1-hlstate<cr>
+
 " leader q = quit
 nnoremap <Leader>q :q<CR>
 
-" leader f = show ex command history
-nnoremap <Leader>f : <C-f>
+" leader s = write
+nnoremap <Leader>s :w<CR>
