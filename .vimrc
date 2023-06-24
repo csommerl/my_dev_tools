@@ -99,7 +99,7 @@ hi Search ctermbg=cyan ctermfg=black
 " WSL
 
 " WSL yank support 
-" from https://www.reddit.com/r/bashonubuntuonwindows/comments/be2q3l/comment/el2vx7u/
+" https://www.reddit.com/r/bashonubuntuonwindows/comments/be2q3l/comment/el2vx7u/
 let s:clip = '/mnt/c/Windows/System32/clip.exe'  " change this path according to your mount point
 if executable(s:clip)
     augroup WSLYank
@@ -112,7 +112,7 @@ endif
 
 " STATUSLINE
 
-" from https://www.reddit.com/r/vim/comments/gexi6/a_smarter_statusline_code_in_comments/
+" https://www.reddit.com/r/vim/comments/gexi6/a_smarter_statusline_code_in_comments/
 set laststatus=2
 hi StatColor guibg=#95e454 guifg=black ctermbg=lightgreen ctermfg=black
 hi Modified guibg=orange guifg=black ctermbg=lightred ctermfg=black
@@ -160,7 +160,7 @@ au InsertLeave * hi StatColor guibg=#95e454 guifg=black ctermbg=lightgreen cterm
 " FOLDING
 
 " JavaScript folding
-" from https://alldrops.info/posts/vim-drops/2018-04-25_javascript-folding-on-vim/
+" https://alldrops.info/posts/vim-drops/2018-04-25_javascript-folding-on-vim/
 set foldmethod=syntax  " syntax highlighting items specify folds
 set foldcolumn=1       " defines 1 col at window left, to indicate folding
 let javaScript_fold=1  " activate folding by JS syntax
@@ -171,18 +171,32 @@ set foldlevelstart=99  " start file with all folds opened
 " MARKDOWN SYNTAX HIGHLIGHTING
 
 " Apply syntax highlighting within code blocks
-" from https://www.benpickles.com/articles/88-vim-syntax-highlight-markdown-code-blocks
+" https://www.benpickles.com/articles/88-vim-syntax-highlight-markdown-code-blocks
 let g:markdown_fenced_languages = ['javascript', 'js=javascript', 'html', 'css']
 
 " Highlighting for bold & italics
-" from https://vi.stackexchange.com/questions/4669/markdown-how-to-syntax-highlight-bold-and-italic-in-different-color-than-normal
+" https://vi.stackexchange.com/questions/4669/markdown-how-to-syntax-highlight-bold-and-italic-in-different-color-than-normal
 highlight htmlBold gui=bold guifg=#af0000 ctermfg=yellow
 highlight htmlItalic gui=italic guifg=#ff8700 ctermfg=red
 
 " Highlighting for code snippets
-" from https://raw.githubusercontent.com/tpope/vim-markdown/master/syntax/markdown.vim
+" https://raw.githubusercontent.com/tpope/vim-markdown/master/syntax/markdown.vim
 highlight markdownCode guifg=#ff8700 ctermfg=green
 highlight markdownCodeDelimiter guifg=#ff8700 ctermfg=green
+
+" -----------------------------------------------------------------------------
+
+" JAVASCRIPT ESLINT SUPPORT
+" https://gist.github.com/romainl/ce55ce6fdc1659c5fbc0f4224fd6ad29
+
+" Set compiler / linter to ESLint
+autocmd FileType javascript compiler eslint
+
+" Open quickfix window whenever quickfix command is executed (like :make) AND there are valid errors to display
+autocmd QuickFixCmdPost [^l]* cwindow
+
+" run :make on the current file matching <pattern> whenever you :write it
+autocmd BufWritePost *.js silent make! <afile> | silent redraw!
 
 "------------------------------------------------------------------------------
 
@@ -193,7 +207,7 @@ noremap H ^
 noremap L $
 
 " n & N = next & previous search result, at top of screen, in Normal
-" from https://stackoverflow.com/questions/45866451/put-the-search-results-at-the-top-of-the-screen-in-vi
+" https://stackoverflow.com/questions/45866451/put-the-search-results-at-the-top-of-the-screen-in-vi
 nnoremap n nzt
 nnoremap N Nzt
 
@@ -243,6 +257,9 @@ nnoremap <Leader>f za
 let hlstate=0
 nnoremap <Leader>h :if (hlstate == 0) \| nohlsearch \| else \| set hlsearch \| endif \| let hlstate=1-hlstate<cr>
 
+" leader m = make current file
+nnoremap <Leader>m :make %<CR>
+
 " leader p = delete and paste without replacing register
 noremap <Leader>p "_dP
 
@@ -254,3 +271,7 @@ nnoremap <Leader>s :w<CR>
 
 " leader t = shell
 nnoremap <leader>t :sh<CR>
+
+"------------------------------------------------------------------------------
+
+" leader r = ctrl w l, 40 ctr w |
