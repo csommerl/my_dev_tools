@@ -1,12 +1,3 @@
-" UNCATEGORIZED SETTINGS
-set expandtab
-set nowrap
-set nowrapscan
-set scrolloff=6
-" set cmdheight=2
-
-"------------------------------------------------------------------------------
-
 " GENERAL
 
 " Turn off backwards compatibility with vi
@@ -18,7 +9,7 @@ filetype on
 " Enable plugins for file types
 filetype plugin on
 
-" Hides instead of discarding)unsaved files when opening a new buffer
+" Hides (instead of discarding) unsaved files when opening a new buffer
 set hidden
 
 " No sound on errors
@@ -31,32 +22,11 @@ set belloff=all
 " Syntax highlighting
 syntax enable
 
-" Show commands in bottom right
-set showcmd
-
 " Color theme
 colorscheme slate
 
 " Keep terminal background color
 hi Normal guibg=NONE ctermbg=NONE
-
-" Sign column
-set signcolumn=auto
-
-" Avoid all the |hit-enter| prompts caused by file messages
-set shortmess=a
-
-" Show column marking 80 character length
-set colorcolumn=80
-highlight ColorColumn ctermbg=white guibg=black
-
-" Word Wrap for Markdown and text files
-autocmd FileType markdown setlocal wrap
-autocmd FileType text setlocal wrap
-
-"------------------------------------------------------------------------------
-
-" LINE NUMBERING
 
 " Show line numbers
 set number
@@ -67,6 +37,29 @@ set relativenumber
 " Line numbering when browsing directories
 let g:netrw_bufsettings = 'noma nomod nu nowrap ro nobl'
 
+" Show commands in bottom right
+set showcmd
+
+" Avoid |hit-enter| prompts caused by file messages; alt: set cmdheight=2
+set shortmess=a
+
+" Sign column
+set signcolumn=auto
+
+" Show column marking 80 character length
+set colorcolumn=80
+highlight ColorColumn ctermbg=white guibg=black
+
+" Display at least 6 lines above and below cursor when scrolling
+set scrolloff=6
+
+" Turn off word wrap
+set nowrap
+
+" Word wrap for Markdown and text files
+autocmd FileType markdown setlocal wrap
+autocmd FileType text setlocal wrap
+
 "------------------------------------------------------------------------------
 
 " INDENTATION
@@ -75,6 +68,9 @@ let g:netrw_bufsettings = 'noma nomod nu nowrap ro nobl'
 filetype indent on
 set smartindent
 
+" Insert space characters when tab is pressed
+set expandtab
+
 " Settings for filetypes
 autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
 autocmd FileType python setlocal shiftwidth=4 tabstop=4
@@ -82,7 +78,13 @@ autocmd FileType markdown setlocal shiftwidth=2 tabstop=2
 
 "------------------------------------------------------------------------------
 
-" SEARCH SETTINGS
+" SEARCH
+
+" Ignore case in search except when typing capital characters 
+set ignorecase smartcase
+
+" Search does not wrap around end of file
+set nowrapscan
 
 " Highlight matches as the search term is being typed
 set incsearch
@@ -92,12 +94,9 @@ hi IncSearch cterm=NONE ctermbg=cyan ctermfg=black
 set hlsearch
 hi Search ctermbg=cyan ctermfg=black
 
-" Ignore case in search except when typing capital characters 
-set ignorecase smartcase
-
 "------------------------------------------------------------------------------
 
-" WSL SETTINGS
+" WSL
 
 " WSL yank support 
 " from https://www.reddit.com/r/bashonubuntuonwindows/comments/be2q3l/comment/el2vx7u/
@@ -169,7 +168,7 @@ set foldlevelstart=99  " start file with all folds opened
 
 "------------------------------------------------------------------------------
 
-" MARKDOWN
+" MARKDOWN SYNTAX HIGHLIGHTING
 
 " Apply syntax highlighting within code blocks
 " from https://www.benpickles.com/articles/88-vim-syntax-highlight-markdown-code-blocks
@@ -227,8 +226,8 @@ let mapleader=" "
 " leader b = list the available buffers and prepare :b for you.
 nnoremap <Leader>b :ls<CR>:b<Space>
 
-" leader d = shell
-nnoremap <Leader>d :sh<CR>
+" leader d = delete without replacing register
+nnoremap <Leader>d "_d
 
 " leader e = explorer
 nnoremap <Leader>e :e <C-d>
@@ -241,8 +240,14 @@ nnoremap <Leader>f : <C-f>
 let hlstate=0
 nnoremap <Leader>h :if (hlstate == 0) \| nohlsearch \| else \| set hlsearch \| endif \| let hlstate=1-hlstate<cr>
 
+" leader p = delete and paste without replacing register
+noremap <Leader>p "_dP
+
 " leader q = quit
 nnoremap <Leader>q :q<CR>
 
 " leader s = write
 nnoremap <Leader>s :w<CR>
+
+" leader t = shell
+nnoremap <leader>t :sh<CR>
