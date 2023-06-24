@@ -1,6 +1,8 @@
 # Vim Mods
 
-- Alphabetize vimrc?
+# How I installed VIM 9
+- https://vi.stackexchange.com/questions/10817/how-can-i-get-a-newer-version-of-vim-on-ubuntu
+- https://itsfoss.com/install-latest-vim-ubuntu/
 
 ## Sources
 

@@ -23,7 +23,7 @@ set belloff=all
 syntax enable
 
 " Color theme
-colorscheme catppuccin_frappe
+"colorscheme catppuccin_frappe
 
 " Keep terminal background color
 hi Normal guibg=NONE ctermbg=NONE
@@ -100,13 +100,13 @@ hi Search ctermbg=cyan ctermfg=black
 
 " WSL yank support 
 " from https://www.reddit.com/r/bashonubuntuonwindows/comments/be2q3l/comment/el2vx7u/
-" let s:clip = '/mnt/c/Windows/System32/clip.exe'  " change this path according to your mount point
-" if executable(s:clip)
-"     augroup WSLYank
-"         autocmd!
-"         autocmd TextYankPost * if v:event.operator ==# 'y' | call system(s:clip, @0) | endif
-"     augroup END
-" endif
+let s:clip = '/mnt/c/Windows/System32/clip.exe'  " change this path according to your mount point
+if executable(s:clip)
+    augroup WSLYank
+        autocmd!
+        autocmd TextYankPost * if v:event.operator ==# 'y' | call system(s:clip, @0) | endif
+    augroup END
+endif
 
 "------------------------------------------------------------------------------
 
