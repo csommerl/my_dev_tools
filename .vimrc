@@ -23,7 +23,7 @@ set belloff=all
 syntax enable
 
 " Color theme
-colorscheme slate
+colorscheme catppuccin_frappe
 
 " Keep terminal background color
 hi Normal guibg=NONE ctermbg=NONE
@@ -100,13 +100,13 @@ hi Search ctermbg=cyan ctermfg=black
 
 " WSL yank support 
 " from https://www.reddit.com/r/bashonubuntuonwindows/comments/be2q3l/comment/el2vx7u/
-let s:clip = '/mnt/c/Windows/System32/clip.exe'  " change this path according to your mount point
-if executable(s:clip)
-    augroup WSLYank
-        autocmd!
-        autocmd TextYankPost * if v:event.operator ==# 'y' | call system(s:clip, @0) | endif
-    augroup END
-endif
+" let s:clip = '/mnt/c/Windows/System32/clip.exe'  " change this path according to your mount point
+" if executable(s:clip)
+"     augroup WSLYank
+"         autocmd!
+"         autocmd TextYankPost * if v:event.operator ==# 'y' | call system(s:clip, @0) | endif
+"     augroup END
+" endif
 
 "------------------------------------------------------------------------------
 
@@ -223,17 +223,20 @@ noremap <PageDown> <C-d>zt
 nnoremap <SPACE> <Nop>
 let mapleader=" "
 
-" leader b = list the available buffers and prepare :b for you.
+" leader b = list the available buffers and prepare :b for you
 nnoremap <Leader>b :ls<CR>:b<Space>
 
 " leader d = delete without replacing register
 nnoremap <Leader>d "_d
 
-" leader e = explorer
+" leader e = explorer and show directory
 nnoremap <Leader>e :e <C-d>
 
-" leader f = show ex command history
-nnoremap <Leader>f : <C-f>
+" leader E = show ex command history
+nnoremap <Leader>E : <C-f>
+
+" leader f = toggle fold
+nnoremap <Leader>f za
 
 " leader h = toggle search highlighting
 " https://stackoverflow.com/questions/9054780/how-to-toggle-vims-search-highlight-visibility-without-disabling-it

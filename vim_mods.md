@@ -7,6 +7,7 @@
 [Frequents](https://www.reddit.com/r/vim/comments/oyqkkd/your_most_frequently_used_mapping/)
 [Space, Enter, and BS](https://www.reddit.com/r/vim/comments/3egaqw/spacebar_backspace_and_enter_are_all_fairly/)
 [Other](https://www.reddit.com/r/vim/comments/btyjhh/whats_your_shift_hjkl_normal_mode_mappings/)
+https://youtu.be/w7i4amO_zaE
 
 ## To Look Into
 Search r/vim for things
