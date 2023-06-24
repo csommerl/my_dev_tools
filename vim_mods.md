@@ -25,6 +25,7 @@ use plugins with nvim
 - Q, q
 - Y to Y$
 - =
+- shift enter
 
 ## Macros to add
 

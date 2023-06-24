@@ -189,27 +189,32 @@ highlight markdownCodeDelimiter guifg=#ff8700 ctermfg=green
 
 " KEY MAPPINGS
 
-" Backspace to buffer
-nnoremap <BS> <C-^>zt
-noremap <S-BS> :bnext<cr>
-
-" Enter to colon, except in quickfix
-nnoremap <CR><CR> <CR>
-nnoremap <CR> :
-autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
-
-" PageUp & PageDown to half up & down in Normal, Visual, Select, Operator-pending
-noremap <PageUp> <C-u>
-noremap <PageDown> <C-d>
-
-" H and L to start and end of line in Normal, Visual, Select, Operator-pending
+" H & L = start & end of line in Normal, Visual, Select, Operator-pending
 noremap H ^
 noremap L $
 
-" put next and previous search results at top of screen
+" n & N = next & previous search result, at top of screen, in Normal
 " from https://stackoverflow.com/questions/45866451/put-the-search-results-at-the-top-of-the-screen-in-vi
 nnoremap n nzt
 nnoremap N Nzt
+
+" BS = top of previous buffer, in Normal
+" Shift BS = next buffer
+nnoremap <BS> <C-^>zt
+nnoremap <S-BS> :bnext<cr>
+
+" <C-u> & <C-d>: keep cursor at top
+nnoremap <C-u> <C-u>zt
+nnoremap <C-d> <C-d>zt
+
+" <CR> = colon, except in quickfix in Normal, Visual, Select, Operator-pending
+noremap <CR><CR> <CR>
+noremap <CR> :
+autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
+
+" PageUp & PageDown = half up & down in Normal, Visual, Select, Operator-pending
+noremap <PageUp> <C-u>zt
+noremap <PageDown> <C-d>zt
 
 "------------------------------------------------------------------------------
 
