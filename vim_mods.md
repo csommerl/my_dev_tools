@@ -1,6 +1,24 @@
 # Vim Mods
 
-# How I installed VIM 9
+https://learnvim.irian.to/
+
+set up augroups
+
+" leader right = move pane to right
+nnoremap <Leader><Right> <C-w>L \| 45<C-w>\|
+
+" leader down = move pane to bottom
+nnoremap <Leader><Down> <C-w>J \| 5<C-w>\_
+
+
+
+## Plugins
+
+- https://github.com/pangloss/vim-javascript
+- https://github.com/sheerun/vim-polyglot
+
+## How I installed VIM 9
+
 - https://vi.stackexchange.com/questions/10817/how-can-i-get-a-newer-version-of-vim-on-ubuntu
 - https://itsfoss.com/install-latest-vim-ubuntu/
 

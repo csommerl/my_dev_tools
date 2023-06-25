@@ -1,4 +1,4 @@
-" GENERAL
+" GENERAL {{{
 
 " Turn off backwards compatibility with vi
 set nocompatible
@@ -15,15 +15,15 @@ set hidden
 " No sound on errors
 set belloff=all
 
-"------------------------------------------------------------------------------
+" }}}
 
-" APPEARANCE
+" APPEARANCE {{{
 
 " Syntax highlighting
 syntax enable
 
 " Color theme
-"colorscheme catppuccin_frappe
+colorscheme catppuccin_frappe
 
 " Keep terminal background color
 hi Normal guibg=NONE ctermbg=NONE
@@ -60,9 +60,9 @@ set nowrap
 autocmd FileType markdown setlocal wrap
 autocmd FileType text setlocal wrap
 
-"------------------------------------------------------------------------------
+" }}}
 
-" INDENTATION
+" INDENTATION {{{
 
 " Set to indent based on filetype
 filetype indent on
@@ -76,9 +76,9 @@ autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
 autocmd FileType python setlocal shiftwidth=4 tabstop=4
 autocmd FileType markdown setlocal shiftwidth=2 tabstop=2
 
-"------------------------------------------------------------------------------
+" }}}
 
-" SEARCH
+" SEARCH {{{
 
 " Ignore case in search except when typing capital characters 
 set ignorecase smartcase
@@ -94,9 +94,9 @@ hi IncSearch cterm=NONE ctermbg=cyan ctermfg=black
 set hlsearch
 hi Search ctermbg=cyan ctermfg=black
 
-"------------------------------------------------------------------------------
+" }}}
 
-" WSL
+" WSL {{{
 
 " WSL yank support 
 " https://www.reddit.com/r/bashonubuntuonwindows/comments/be2q3l/comment/el2vx7u/
@@ -108,9 +108,9 @@ if executable(s:clip)
     augroup END
 endif
 
-"------------------------------------------------------------------------------
+" }}}
 
-" STATUSLINE
+" STATUSLINE {{{
 
 " https://www.reddit.com/r/vim/comments/gexi6/a_smarter_statusline_code_in_comments/
 set laststatus=2
@@ -155,20 +155,25 @@ endfunction
 au InsertEnter * call InsertStatuslineColor(v:insertmode)
 au InsertLeave * hi StatColor guibg=#95e454 guifg=black ctermbg=lightgreen ctermfg=black
 
-"------------------------------------------------------------------------------
+" }}}
 
-" FOLDING
+" FOLDING {{{
 
-" JavaScript folding
-" https://alldrops.info/posts/vim-drops/2018-04-25_javascript-folding-on-vim/
-set foldmethod=syntax  " syntax highlighting items specify folds
-set foldcolumn=1       " defines 1 col at window left, to indicate folding
-let javaScript_fold=1  " activate folding by JS syntax
-set foldlevelstart=99  " start file with all folds opened
+set foldlevelstart=99
 
-"------------------------------------------------------------------------------
+augroup vim_folding
+  autocmd!
+  autocmd FileType vim setlocal foldmethod=marker foldmarker={{{,}}}
+augroup END
 
-" MARKDOWN SYNTAX HIGHLIGHTING
+augroup js_folding
+  autocmd!
+  autocmd FileType javascript setlocal foldmethod=marker foldmarker={,}
+augroup END
+
+" }}}
+
+" MARKDOWN SYNTAX HIGHLIGHTING {{{
 
 " Apply syntax highlighting within code blocks
 " https://www.benpickles.com/articles/88-vim-syntax-highlight-markdown-code-blocks
@@ -184,23 +189,24 @@ highlight htmlItalic gui=italic guifg=#ff8700 ctermfg=red
 highlight markdownCode guifg=#ff8700 ctermfg=green
 highlight markdownCodeDelimiter guifg=#ff8700 ctermfg=green
 
-" -----------------------------------------------------------------------------
+" }}}
 
-" JAVASCRIPT ESLINT SUPPORT
+" JAVASCRIPT ESLINT SUPPORT {{{
 " https://gist.github.com/romainl/ce55ce6fdc1659c5fbc0f4224fd6ad29
 
-" Set compiler / linter to ESLint
-autocmd FileType javascript compiler eslint
+augroup js_linting
+  autocmd!
+  " Set compiler / linter to ESLint
+  autocmd FileType javascript compiler eslint
+  " Open quickfix window whenever quickfix command is executed (like :make) AND there are valid errors to display
+  autocmd QuickFixCmdPost [^l]* cwindow 
+  " run :make on the current file matching <pattern> whenever you :write it
+  autocmd BufWritePost *.js silent make! <afile> | silent redraw!
+augroup END
 
-" Open quickfix window whenever quickfix command is executed (like :make) AND there are valid errors to display
-autocmd QuickFixCmdPost [^l]* cwindow
+" }}}
 
-" run :make on the current file matching <pattern> whenever you :write it
-autocmd BufWritePost *.js silent make! <afile> | silent redraw!
-
-"------------------------------------------------------------------------------
-
-" KEY MAPPINGS
+" KEY MAPPINGS {{{
 
 " H & L = start & end of line in Normal, Visual, Select, Operator-pending
 noremap H ^
@@ -229,9 +235,9 @@ autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
 noremap <PageUp> <C-u>zt
 noremap <PageDown> <C-d>zt
 
-"------------------------------------------------------------------------------
+" }}}
 
-" LEADER MAPPINGS
+" LEADER MAPPINGS {{{
 
 " Leader to space
 nnoremap <SPACE> <Nop>
@@ -270,8 +276,6 @@ nnoremap <Leader>q :q<CR>
 nnoremap <Leader>s :w<CR>
 
 " leader t = shell
-nnoremap <leader>t :sh<CR>
+nnoremap <Leader>t :sh<CR>
 
-"------------------------------------------------------------------------------
-
-" leader r = ctrl w l, 40 ctr w |
+" }}}
