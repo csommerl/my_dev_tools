@@ -23,7 +23,7 @@ set belloff=all
 syntax enable
 
 " Color theme
-colorscheme catppuccin_frappe
+colorscheme catppuccin_macchiato
 
 " Keep terminal background color
 hi Normal guibg=NONE ctermbg=NONE
@@ -45,6 +45,9 @@ set shortmess=a
 
 " Sign column
 set signcolumn=auto
+
+" Underline/highlight current line
+set cursorline
 
 " Show column marking 80 character length
 set colorcolumn=80
