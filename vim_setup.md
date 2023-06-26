@@ -1,8 +1,16 @@
 # Vim Mods
 
-https://learnvim.irian.to/
-
 set up augroups
+
+https://stackoverflow.com/questions/18702327/using-vim-as-a-javascript-sandbox-how-do-i-write-a-buffer-to-node-and-read-the
+
+https://stackoverflow.com/questions/61166913/resize-window-in-vim-with-a-keyboard-map#:~:text=It%20should%20be%20noted%20that,by%201)%3A%20Ctrl%20%2D%20W%20%3E
+
+https://www.bbkane.com/blog/vim-color-schemes/
+
+https://github.com/frazrepo/vim-rainbow
+
+https://learnvim.irian.to/
 
 " leader right = move pane to right
 nnoremap <Leader><Right> <C-w>L \| 45<C-w>\|
@@ -10,7 +18,7 @@ nnoremap <Leader><Right> <C-w>L \| 45<C-w>\|
 " leader down = move pane to bottom
 nnoremap <Leader><Down> <C-w>J \| 5<C-w>\_
 
-
+https://www.hamvocke.com/blog/a-quick-and-easy-guide-to-tmux/
 
 ## Plugins
 
