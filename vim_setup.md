@@ -43,6 +43,14 @@ use plugins with nvim
 
 ## Keys to Remap
 
+K
+M
+Q
+U
+Y
+Z
+Home to scroll up
+End to scroll dow
 - tab
 - hyphen
 - back tick
