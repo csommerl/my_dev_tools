@@ -19,14 +19,17 @@ set belloff=all
 
 " APPEARANCE {{{
 
+" Transparent background
+hi Normal guibg=NONE ctermbg=NONE
+
+" True colors
+set termguicolors
+
 " Syntax highlighting
 syntax enable
 
 " Color theme
 colorscheme catppuccin_macchiato
-
-" Keep terminal background color
-hi Normal guibg=NONE ctermbg=NONE
 
 " Show line numbers
 set number
@@ -51,7 +54,9 @@ set cursorline
 
 " Show column marking 80 character length
 set colorcolumn=80
-highlight ColorColumn ctermbg=white guibg=black
+
+" Color options for color column
+"highlight ColorColumn ctermbg=white guibg=black
 
 " Display at least 6 lines above and below cursor when scrolling
 set scrolloff=6
@@ -117,8 +122,8 @@ endif
 
 " https://www.reddit.com/r/vim/comments/gexi6/a_smarter_statusline_code_in_comments/
 set laststatus=2
-hi StatColor guibg=#95e454 guifg=black ctermbg=lightgreen ctermfg=black
-hi Modified guibg=orange guifg=black ctermbg=lightred ctermfg=black
+hi StatColor guibg=lightgreen guifg=black ctermbg=lightgreen ctermfg=black
+hi Modified guibg=lightred guifg=black ctermbg=lightred ctermfg=black
 
 function! MyStatusLine(mode)
     let statusline=""
@@ -145,18 +150,18 @@ set statusline=%!MyStatusLine('Enter')
 
 function! InsertStatuslineColor(mode)
   if a:mode == 'i'
-    hi StatColor guibg=orange ctermbg=lightred
+    hi StatColor guibg=lightred ctermbg=lightred
   elseif a:mode == 'r'
-    hi StatColor guibg=#e454ba ctermbg=magenta
+    hi StatColor guibg=magenta ctermbg=magenta
   elseif a:mode == 'v'
-    hi StatColor guibg=#e454ba ctermbg=magenta
+    hi StatColor guibg=magenta ctermbg=magenta
   else
     hi StatColor guibg=red ctermbg=red
   endif
 endfunction
 
 au InsertEnter * call InsertStatuslineColor(v:insertmode)
-au InsertLeave * hi StatColor guibg=#95e454 guifg=black ctermbg=lightgreen ctermfg=black
+au InsertLeave * hi StatColor guibg=lightgreen guifg=black ctermbg=lightgreen ctermfg=black
 
 " }}}
 
@@ -184,13 +189,13 @@ let g:markdown_fenced_languages = ['javascript', 'js=javascript', 'html', 'css']
 
 " Highlighting for bold & italics
 " https://vi.stackexchange.com/questions/4669/markdown-how-to-syntax-highlight-bold-and-italic-in-different-color-than-normal
-highlight htmlBold gui=bold guifg=#af0000 ctermfg=yellow
-highlight htmlItalic gui=italic guifg=#ff8700 ctermfg=red
+highlight htmlBold gui=bold guifg=SlateBlue ctermfg=blue
+highlight htmlItalic gui=italic guifg=DarkCyan ctermfg=cyan
 
 " Highlighting for code snippets
 " https://raw.githubusercontent.com/tpope/vim-markdown/master/syntax/markdown.vim
-highlight markdownCode guifg=#ff8700 ctermfg=green
-highlight markdownCodeDelimiter guifg=#ff8700 ctermfg=green
+highlight markdownCode guifg=DarkYellow ctermfg=green
+highlight markdownCodeDelimiter guifg=DarkYellow ctermfg=green
 
 " }}}
 
