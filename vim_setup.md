@@ -2,6 +2,10 @@
 
 set up augroups
 
+https://ankiweb.net/shared/info/1259461418
+
+https://vim.fandom.com/wiki/Moving_lines_up_or_down
+
 https://stackoverflow.com/questions/18702327/using-vim-as-a-javascript-sandbox-how-do-i-write-a-buffer-to-node-and-read-the
 
 https://stackoverflow.com/questions/61166913/resize-window-in-vim-with-a-keyboard-map#:~:text=It%20should%20be%20noted%20that,by%201)%3A%20Ctrl%20%2D%20W%20%3E
@@ -56,14 +60,23 @@ End to scroll dow
 - back tick
 - caps lock
 - quote
-- M
-- l, h
 - K (to %?)
-- Q, q
 - Y to Y$
 - =
 - shift enter
 - delete
+\
+|
+_
+-
++
+@
+alt
+!
+^
+&
+*
+
 
 ## Macros to add
 
@@ -118,3 +131,7 @@ let &t_SR = "\<Esc>[4 q"
 let &t_EI = "\<Esc>[1 q"
 ```
 
+## Neovim
+
+Primeagen
+https://www.freecodecamp.org/news/a-guide-to-modern-web-development-with-neo-vim-333f7efbf8e2/

@@ -189,8 +189,8 @@ let g:markdown_fenced_languages = ['javascript', 'js=javascript', 'html', 'css']
 
 " Highlighting for bold & italics
 " https://vi.stackexchange.com/questions/4669/markdown-how-to-syntax-highlight-bold-and-italic-in-different-color-than-normal
-highlight htmlBold gui=bold guifg=SlateBlue ctermfg=blue
-highlight htmlItalic gui=italic guifg=DarkCyan ctermfg=cyan
+highlight htmlBold gui=bold guifg=DarkCyan ctermfg=cyan
+highlight htmlItalic gui=italic guifg=SlateBlue ctermfg=cyan
 
 " Highlighting for code snippets
 " https://raw.githubusercontent.com/tpope/vim-markdown/master/syntax/markdown.vim
@@ -224,6 +224,9 @@ noremap L $
 " https://stackoverflow.com/questions/45866451/put-the-search-results-at-the-top-of-the-screen-in-vi
 nnoremap n nzt
 nnoremap N Nzt
+
+" U = redo
+noremap U <C-r>
 
 " BS = top of previous buffer, in Normal
 " Shift BS = next buffer
@@ -279,6 +282,9 @@ noremap <Leader>p "_dP
 
 " leader q = quit
 nnoremap <Leader>q :q<CR>
+
+" leader r = run in node
+nnoremap <Leader>r :! node %<CR>
 
 " leader s = write
 nnoremap <Leader>s :w<CR>
