@@ -1,5 +1,7 @@
 # Vim Mods
 
+add undo history
+
 %foldc
 
 K = split line
