@@ -29,7 +29,7 @@ set termguicolors
 syntax enable
 
 " Color theme
-colorscheme catppuccin_macchiato
+colorscheme catppuccin_frappe
 
 " Show line numbers
 set number
@@ -167,6 +167,7 @@ au InsertLeave * hi StatColor guibg=lightgreen guifg=black ctermbg=lightgreen ct
 
 " FOLDING {{{
 
+" start file with all folds open
 set foldlevelstart=99
 
 augroup vim_folding
@@ -229,9 +230,7 @@ nnoremap N Nzt
 noremap U <C-r>
 
 " BS = top of previous buffer, in Normal
-" Shift BS = next buffer
 nnoremap <BS> <C-^>zt
-nnoremap <S-BS> :bnext<cr>
 
 " <C-u> & <C-d>: keep cursor at top
 nnoremap <C-u> <C-u>zt

@@ -1,5 +1,11 @@
 # Vim Mods
 
+%foldc
+
+K = split line
+
+shortcut to move lines up & down
+
 set up augroups
 
 https://ankiweb.net/shared/info/1259461418
