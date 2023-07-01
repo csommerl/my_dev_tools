@@ -170,6 +170,9 @@ au InsertLeave * hi StatColor guibg=lightgreen guifg=black ctermbg=lightgreen ct
 " start file with all folds open
 set foldlevelstart=99
 
+" Markdown folding
+let g:markdown_folding = 1
+
 augroup vim_folding
   autocmd!
   autocmd FileType vim setlocal foldmethod=marker foldmarker={{{,}}}
@@ -210,7 +213,7 @@ augroup js_linting
   " Open quickfix window whenever quickfix command is executed (like :make) AND there are valid errors to display
   autocmd QuickFixCmdPost [^l]* cwindow 
   " run :make on the current file matching <pattern> whenever you :write it
-  autocmd BufWritePost *.js silent make! <afile> | silent redraw!
+  " autocmd BufWritePost *.js silent make! <afile> | silent redraw!
 augroup END
 
 " }}}
