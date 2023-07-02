@@ -232,6 +232,9 @@ nnoremap N Nzt
 " U = redo
 noremap U <C-r>
 
+" Y = yank to end of line
+noremap Y y$
+
 " BS = top of previous buffer, in Normal
 nnoremap <BS> <C-^>zt
 
@@ -258,6 +261,9 @@ let mapleader=" "
 
 " leader b = list the available buffers and prepare :b for you
 nnoremap <Leader>b :ls<CR>:b<Space>
+
+" leader c = fold top level
+nnoremap <Leader>c :%foldc<CR>
 
 " leader d = delete without replacing register
 nnoremap <Leader>d "_d

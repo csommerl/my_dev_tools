@@ -2,11 +2,9 @@
 
 add undo history
 
-%foldc
-
 K = split line
 
-shortcut to move lines up & down
+shortcut to move lines up & down: https://vimtricks.com/p/vimtrick-moving-lines/
 
 set up augroups
 
