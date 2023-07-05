@@ -15,6 +15,9 @@ set hidden
 " No sound on errors
 set belloff=all
 
+" Spelling
+"set spell
+
 " }}}
 
 " APPEARANCE {{{
