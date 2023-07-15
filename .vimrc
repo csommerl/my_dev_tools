@@ -15,9 +15,6 @@ set hidden
 " No sound on errors
 set belloff=all
 
-" Spelling
-"set spell
-
 " }}}
 
 " APPEARANCE {{{
@@ -67,9 +64,9 @@ set scrolloff=6
 " Turn off word wrap
 set nowrap
 
-" Word wrap for Markdown and text files
-autocmd FileType markdown setlocal wrap
-autocmd FileType text setlocal wrap
+" Word wrap and line breaks for Markdown and text files
+autocmd FileType markdown setlocal wrap linebreak spell
+autocmd FileType text setlocal wrap linebreak spell
 
 " }}}
 
