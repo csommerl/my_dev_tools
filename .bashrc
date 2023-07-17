@@ -120,8 +120,13 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
+##### My additions
+
+# Alias for batcat to bat
+alias bat="batcat"
+
+# Custom PSL
 # export PS1="\[\033[38;5;98m\]\u\[$(tput sgr0)\]@\h\[$(tput sgr0)\]\[\033[38;5;160m\][\w]\[$(tput sgr0)\]\[\033[38;5;10m\]\$(git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/')\[$(tput sgr0)\]\n\[$(tput sgr0)\]\[\033[38;5;11m\]>\[$(tput sgr0)\] \[$(tput sgr0)\]"
 
+# oh my posh PSL
 eval "$(oh-my-posh --init --shell bash --config ~/.poshthemes/mytheme2.omp.json)"
-
-alias batcat="bat"
