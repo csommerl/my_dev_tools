@@ -102,6 +102,9 @@ hi IncSearch cterm=NONE ctermbg=cyan ctermfg=black
 set hlsearch
 hi Search ctermbg=cyan ctermfg=black
 
+" Vim looks tags file in current directory first and up & up until it finds it.
+set tags=./tags,tags;
+
 " }}}
 
 " WSL {{{
