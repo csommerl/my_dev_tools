@@ -1,5 +1,11 @@
 # Vim Mods
 
+[Tags](https://learnvim.irian.to/basics/tags)
+- universal ctags setup: https://askubuntu.com/questions/796408/installing-and-using-universal-ctags-instead-of-exuberant-ctags
+- tagbar: https://github.com/preservim/tagbar
+
+autocomplete braces
+
 add undo history
 
 K = split line
