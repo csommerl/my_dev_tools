@@ -84,6 +84,9 @@ autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
 autocmd FileType python setlocal shiftwidth=4 tabstop=4
 autocmd FileType markdown setlocal shiftwidth=2 tabstop=2
 
+" Set to round to proper indentation based on shiftwidth when using <>
+set shiftround
+
 " }}}
 
 " SEARCH {{{
