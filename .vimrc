@@ -64,9 +64,12 @@ set scrolloff=6
 " Turn off word wrap
 set nowrap
 
-" Word wrap and line breaks for Markdown and text files
+" Word wrap, line breaks, & spellcheck for Markdown & text files
 autocmd FileType markdown setlocal wrap linebreak spell
 autocmd FileType text setlocal wrap linebreak spell
+
+" Change color of misspelled words
+"highlight SpellBad guibg=lightred ctermbg=lightred guifg=black ctermfg=black
 
 " }}}
 
@@ -305,5 +308,11 @@ nnoremap <Leader>s :w<CR>
 
 " leader t = shell
 nnoremap <Leader>t :sh<CR>
+
+" leader / = comment out
+vnoremap <Leader>/ :norm I// <CR>
+
+" leader \ = remove comment
+vnoremap <Leader>\ :norm ^3x<CR>
 
 " }}}
