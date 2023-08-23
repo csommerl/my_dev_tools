@@ -229,6 +229,10 @@ augroup END
 
 " KEY MAPPINGS {{{
 
+" [b & ]b = previous buffer and next buffer
+nnoremap [b :bprevious<CR>
+nnoremap ]b :bnext<CR>
+
 " H & L = start & end of line in Normal, Visual, Select, Operator-pending
 noremap H ^
 noremap L $
