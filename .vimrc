@@ -111,6 +111,15 @@ hi Search ctermbg=cyan ctermfg=black
 " Vim looks tags file in current directory first and up & up until it finds it.
 set tags=./tags,tags;
 
+" Fuzzy file finder
+" https://www.youtube.com/watch?v=XA2WjJbmmoM&t
+" Search through every subdirectory, recursively
+set path+=**
+" Display all matching files when we tab complete
+set wildmenu
+" Ignore these files & directories
+set wildignore+=*.git/*,*node_modules/*,package-lock.json,package.json
+
 " }}}
 
 " WSL {{{
@@ -250,6 +259,9 @@ noremap Y y$
 
 " BS = top of previous buffer, in Normal
 nnoremap <BS> <C-^>zt
+
+" Ctrl+p = find in current directory
+nnoremap <C-p> :find 
 
 " <C-u> & <C-d>: keep cursor at top
 nnoremap <C-u> <C-u>zt
