@@ -102,8 +102,8 @@ let g:netrw_banner=0
 " let g:netrw_liststyle=3
 
 " Hide stuff
-let g:netrw_list_hide=netrw_gitignore#Hide()
-let g:netrw_list_hide.=',\(^\|\s\s\)\zs\.\S\+'
+"let g:netrw_list_hide=netrw_gitignore#Hide()
+"let g:netrw_list_hide.=',\(^\|\s\s\)\zs\.\S\+'
 
 " Line numbering when browsing directories
 let g:netrw_bufsettings = 'noma nomod nu nowrap ro nobl'
@@ -354,5 +354,11 @@ vnoremap <Leader>/ :norm I// <CR>
 
 " leader \ = remove comment
 vnoremap <Leader>\ :norm ^3x<CR>
+
+" }}}
+
+" {{{ SESSIONS
+
+set sessionoptions-=options
 
 " }}}
