@@ -37,9 +37,6 @@ set number
 " Show relative line numbers
 set relativenumber
 
-" Line numbering when browsing directories
-let g:netrw_bufsettings = 'noma nomod nu nowrap ro nobl'
-
 " Show commands in bottom right
 set showcmd
 
@@ -67,6 +64,9 @@ set nowrap
 " Word wrap, line breaks, & spellcheck for Markdown & text files
 autocmd FileType markdown setlocal wrap linebreak spell
 autocmd FileType text setlocal wrap linebreak spell
+
+" Show only top 15 options, so that the window isn't taken over
+set spellsuggest=15
 
 " Change color of misspelled words
 "highlight SpellBad guibg=lightred ctermbg=lightred guifg=black ctermfg=black
@@ -104,6 +104,9 @@ let g:netrw_banner=0
 " Hide stuff
 let g:netrw_list_hide=netrw_gitignore#Hide()
 let g:netrw_list_hide.=',\(^\|\s\s\)\zs\.\S\+'
+
+" Line numbering when browsing directories
+let g:netrw_bufsettings = 'noma nomod nu nowrap ro nobl'
 
 " }}}
 
