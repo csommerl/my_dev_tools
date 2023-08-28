@@ -92,6 +92,21 @@ set shiftround
 
 " }}}
 
+" NETRW {{{
+" https://github.com/changemewtf/no_plugins/blob/master/no_plugins.vim
+
+" Disable netrw banner
+let g:netrw_banner=0
+
+" Default to tree view
+" let g:netrw_liststyle=3
+
+" Hide stuff
+let g:netrw_list_hide=netrw_gitignore#Hide()
+let g:netrw_list_hide.=',\(^\|\s\s\)\zs\.\S\+'
+
+" }}}
+
 " SEARCH {{{
 
 " Ignore case in search except when typing capital characters 
@@ -111,12 +126,18 @@ hi Search ctermbg=cyan ctermfg=black
 " Vim looks tags file in current directory first and up & up until it finds it.
 set tags=./tags,tags;
 
-" Fuzzy file finder
+" }}}
+
+" FUZZY FILE FINDER {{{
+" https://github.com/changemewtf/no_plugins
 " https://www.youtube.com/watch?v=XA2WjJbmmoM&t
+
 " Search through every subdirectory, recursively
 set path+=**
+
 " Display all matching files when we tab complete
 set wildmenu
+
 " Ignore these files & directories
 set wildignore+=*.git/*,*node_modules/*,package-lock.json,package.json
 
@@ -310,8 +331,8 @@ nnoremap <Leader>h :if (hlstate == 0) \| nohlsearch \| else \| set hlsearch \| e
 " leader m = make current file
 nnoremap <Leader>m :make %<CR>
 
-" leader p = delete and paste without replacing register
-noremap <Leader>p "_dP
+" leader p = file finder
+nnoremap <Leader>p :find 
 
 " leader q = quit
 nnoremap <Leader>q :q<CR>

@@ -3,6 +3,7 @@
 [Tags](https://learnvim.irian.to/basics/tags)
 - universal ctags setup: https://askubuntu.com/questions/796408/installing-and-using-universal-ctags-instead-of-exuberant-ctags
 - tagbar: https://github.com/preservim/tagbar
+- https://github.com/changemewtf/no_plugins/blob/master/no_plugins.vim
 
 autocomplete braces
 
