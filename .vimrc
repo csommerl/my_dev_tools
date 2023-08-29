@@ -19,6 +19,9 @@ set belloff=all
 
 " APPEARANCE {{{
 
+" Show filename in title bar
+set title
+
 " Transparent background
 hi Normal guibg=NONE ctermbg=NONE
 
@@ -76,8 +79,11 @@ set spellsuggest=15
 " INDENTATION {{{
 
 " Set to indent based on filetype
+set autoindent
 filetype indent on
-set smartindent
+
+" test
+set smarttab
 
 " Insert space characters when tab is pressed
 set expandtab
@@ -86,9 +92,6 @@ set expandtab
 autocmd FileType javascript setlocal shiftwidth=2 tabstop=2 softtabstop=2
 autocmd FileType python setlocal shiftwidth=4 tabstop=4 softtabstop=4
 autocmd FileType markdown setlocal shiftwidth=2 tabstop=2 softtabstop=2
-
-" test
-set smarttab
 
 " Set to round to proper indentation based on shiftwidth when using <>
 set shiftround
