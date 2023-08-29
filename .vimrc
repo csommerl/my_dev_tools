@@ -83,9 +83,12 @@ set smartindent
 set expandtab
 
 " Settings for filetypes
-autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
-autocmd FileType python setlocal shiftwidth=4 tabstop=4
-autocmd FileType markdown setlocal shiftwidth=2 tabstop=2
+autocmd FileType javascript setlocal shiftwidth=2 tabstop=2 softtabstop=2
+autocmd FileType python setlocal shiftwidth=4 tabstop=4 softtabstop=4
+autocmd FileType markdown setlocal shiftwidth=2 tabstop=2 softtabstop=2
+
+" test
+set smarttab
 
 " Set to round to proper indentation based on shiftwidth when using <>
 set shiftround
