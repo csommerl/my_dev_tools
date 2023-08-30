@@ -15,6 +15,10 @@ set hidden
 " No sound on errors
 set belloff=all
 
+" Keep undo history in ~/.vim/undodir
+set undofile
+set undodir=~/.vim/undodir
+
 " }}}
 
 " APPEARANCE {{{
