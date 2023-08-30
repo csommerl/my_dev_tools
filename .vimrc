@@ -237,7 +237,7 @@ augroup END
 
 " Apply syntax highlighting within code blocks
 " https://www.benpickles.com/articles/88-vim-syntax-highlight-markdown-code-blocks
-let g:markdown_fenced_languages = ['javascript', 'js=javascript', 'html', 'css']
+let g:markdown_fenced_languages = ['javascript', 'js=javascript', 'html', 'css', 'vim', 'bash']
 
 " Highlighting for bold & italics
 " https://vi.stackexchange.com/questions/4669/markdown-how-to-syntax-highlight-bold-and-italic-in-different-color-than-normal
