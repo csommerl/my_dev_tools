@@ -294,9 +294,6 @@ noremap Y y$
 " BS = top of previous buffer, in Normal
 nnoremap <BS> <C-^>zt
 
-" Ctrl+p = find in current directory
-nnoremap <C-p> :find 
-
 " <C-u> & <C-d>: keep cursor at top
 nnoremap <C-u> <C-u>zt
 nnoremap <C-d> <C-d>zt
@@ -345,7 +342,7 @@ nnoremap <Leader>h :if (hlstate == 0) \| nohlsearch \| else \| set hlsearch \| e
 nnoremap <Leader>m :make %<CR>
 
 " leader p = file finder
-nnoremap <Leader>p :find 
+nnoremap <Leader>p :find *
 
 " leader q = quit
 nnoremap <Leader>q :q<CR>
