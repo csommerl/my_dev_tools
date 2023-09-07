@@ -338,6 +338,9 @@ nnoremap <Leader>f za
 let hlstate=0
 nnoremap <Leader>h :if (hlstate == 0) \| nohlsearch \| else \| set hlsearch \| endif \| let hlstate=1-hlstate<cr>
 
+" leader l = console.log
+nnoremap <Leader>l oconsole.log();<ESC>hi
+
 " leader m = make current file
 nnoremap <Leader>m :make %<CR>
 
