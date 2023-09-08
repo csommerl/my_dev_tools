@@ -32,9 +32,6 @@ hi Normal guibg=NONE ctermbg=NONE
 " True colors
 set termguicolors
 
-" Syntax highlighting
-syntax enable
-
 " Color theme
 colorscheme catppuccin_frappe
 
@@ -75,30 +72,76 @@ autocmd FileType text setlocal wrap linebreak spell
 " Show only top 15 options, so that the window isn't taken over
 set spellsuggest=15
 
+" }}}
+
+" SYNTAX HIGHLIGHTING {{{
+
+" Syntax highlighting
+syntax enable
+
+" Apply syntax highlighting within code blocks
+" https://www.benpickles.com/articles/88-vim-syntax-highlight-markdown-code-blocks
+let g:markdown_fenced_languages = ['javascript', 'js=javascript', 'html', 'css', 'vim', 'bash']
+
+" Highlighting for bold & italics
+" https://vi.stackexchange.com/questions/4669/markdown-how-to-syntax-highlight-bold-and-italic-in-different-color-than-normal
+highlight htmlBold gui=bold guifg=DarkCyan ctermfg=cyan
+highlight htmlItalic gui=italic guifg=SlateBlue ctermfg=cyan
+
+" Highlighting for code snippets
+" https://raw.githubusercontent.com/tpope/vim-markdown/master/syntax/markdown.vim
+highlight markdownCode guifg=DarkYellow ctermfg=green
+highlight markdownCodeDelimiter guifg=DarkYellow ctermfg=green
+
 " Change color of misspelled words
 "highlight SpellBad guibg=lightred ctermbg=lightred guifg=black ctermfg=black
 
 " }}}
 
-" INDENTATION {{{
+" STATUSLINE {{{
 
-" Set to indent based on filetype
-set autoindent
-filetype indent on
+" https://www.reddit.com/r/vim/comments/gexi6/a_smarter_statusline_code_in_comments/
+set laststatus=2
+hi StatColor guibg=lightgreen guifg=black ctermbg=lightgreen ctermfg=black
+hi Modified guibg=lightred guifg=black ctermbg=lightred ctermfg=black
 
-" test
-set smarttab
+function! MyStatusLine(mode)
+    let statusline=""
+    if a:mode == 'Enter'
+        let statusline.="%#StatColor#"
+    endif
+    let statusline.="\(%n\)\ %f\ "
+    if a:mode == 'Enter'
+        let statusline.="%*"
+    endif
+    let statusline.="%#Modified#%m"
+    if a:mode == 'Leave'
+        let statusline.="%*%r"
+    elseif a:mode == 'Enter'
+        let statusline.="%r%*"
+    endif
+    let statusline .= "\ (%l/%L,\ %c)\ %P%=%h%w\ %y\ [%{&encoding}:%{&fileformat}]\ \ "
+    return statusline
+endfunction
 
-" Insert space characters when tab is pressed
-set expandtab
+au WinEnter * setlocal statusline=%!MyStatusLine('Enter')
+au WinLeave * setlocal statusline=%!MyStatusLine('Leave')
+set statusline=%!MyStatusLine('Enter')
 
-" Settings for filetypes
-autocmd FileType javascript setlocal shiftwidth=2 tabstop=2 softtabstop=2
-autocmd FileType python setlocal shiftwidth=4 tabstop=4 softtabstop=4
-autocmd FileType markdown setlocal shiftwidth=2 tabstop=2 softtabstop=2
+function! InsertStatuslineColor(mode)
+  if a:mode == 'i'
+    hi StatColor guibg=lightred ctermbg=lightred
+  elseif a:mode == 'r'
+    hi StatColor guibg=magenta ctermbg=magenta
+  elseif a:mode == 'v'
+    hi StatColor guibg=magenta ctermbg=magenta
+  else
+    hi StatColor guibg=red ctermbg=red
+  endif
+endfunction
 
-" Set to round to proper indentation based on shiftwidth when using <>
-set shiftround
+au InsertEnter * call InsertStatuslineColor(v:insertmode)
+au InsertLeave * hi StatColor guibg=lightgreen guifg=black ctermbg=lightgreen ctermfg=black
 
 " }}}
 
@@ -156,67 +199,6 @@ set wildignore+=*.git/*,*node_modules/*,package-lock.json,package.json
 
 " }}}
 
-" WSL {{{
-
-" WSL yank support 
-" https://www.reddit.com/r/bashonubuntuonwindows/comments/be2q3l/comment/el2vx7u/
-let s:clip = '/mnt/c/Windows/System32/clip.exe'  " change this path according to your mount point
-if executable(s:clip)
-    augroup WSLYank
-        autocmd!
-        autocmd TextYankPost * if v:event.operator ==# 'y' | call system(s:clip, @0) | endif
-    augroup END
-endif
-
-" }}}
-
-" STATUSLINE {{{
-
-" https://www.reddit.com/r/vim/comments/gexi6/a_smarter_statusline_code_in_comments/
-set laststatus=2
-hi StatColor guibg=lightgreen guifg=black ctermbg=lightgreen ctermfg=black
-hi Modified guibg=lightred guifg=black ctermbg=lightred ctermfg=black
-
-function! MyStatusLine(mode)
-    let statusline=""
-    if a:mode == 'Enter'
-        let statusline.="%#StatColor#"
-    endif
-    let statusline.="\(%n\)\ %f\ "
-    if a:mode == 'Enter'
-        let statusline.="%*"
-    endif
-    let statusline.="%#Modified#%m"
-    if a:mode == 'Leave'
-        let statusline.="%*%r"
-    elseif a:mode == 'Enter'
-        let statusline.="%r%*"
-    endif
-    let statusline .= "\ (%l/%L,\ %c)\ %P%=%h%w\ %y\ [%{&encoding}:%{&fileformat}]\ \ "
-    return statusline
-endfunction
-
-au WinEnter * setlocal statusline=%!MyStatusLine('Enter')
-au WinLeave * setlocal statusline=%!MyStatusLine('Leave')
-set statusline=%!MyStatusLine('Enter')
-
-function! InsertStatuslineColor(mode)
-  if a:mode == 'i'
-    hi StatColor guibg=lightred ctermbg=lightred
-  elseif a:mode == 'r'
-    hi StatColor guibg=magenta ctermbg=magenta
-  elseif a:mode == 'v'
-    hi StatColor guibg=magenta ctermbg=magenta
-  else
-    hi StatColor guibg=red ctermbg=red
-  endif
-endfunction
-
-au InsertEnter * call InsertStatuslineColor(v:insertmode)
-au InsertLeave * hi StatColor guibg=lightgreen guifg=black ctermbg=lightgreen ctermfg=black
-
-" }}}
-
 " FOLDING {{{
 
 " start file with all folds open
@@ -237,25 +219,35 @@ augroup END
 
 " }}}
 
-" MARKDOWN SYNTAX HIGHLIGHTING {{{
+" {{{ SESSIONS
 
-" Apply syntax highlighting within code blocks
-" https://www.benpickles.com/articles/88-vim-syntax-highlight-markdown-code-blocks
-let g:markdown_fenced_languages = ['javascript', 'js=javascript', 'html', 'css', 'vim', 'bash']
-
-" Highlighting for bold & italics
-" https://vi.stackexchange.com/questions/4669/markdown-how-to-syntax-highlight-bold-and-italic-in-different-color-than-normal
-highlight htmlBold gui=bold guifg=DarkCyan ctermfg=cyan
-highlight htmlItalic gui=italic guifg=SlateBlue ctermfg=cyan
-
-" Highlighting for code snippets
-" https://raw.githubusercontent.com/tpope/vim-markdown/master/syntax/markdown.vim
-highlight markdownCode guifg=DarkYellow ctermfg=green
-highlight markdownCodeDelimiter guifg=DarkYellow ctermfg=green
+set sessionoptions-=options
 
 " }}}
 
-" JAVASCRIPT ESLINT SUPPORT {{{
+" INDENTATION {{{
+
+" Set to indent based on filetype
+set autoindent
+filetype indent on
+
+" test
+set smarttab
+
+" Insert space characters when tab is pressed
+set expandtab
+
+" Settings for filetypes
+autocmd FileType javascript setlocal shiftwidth=2 tabstop=2 softtabstop=2
+autocmd FileType python setlocal shiftwidth=4 tabstop=4 softtabstop=4
+autocmd FileType markdown setlocal shiftwidth=2 tabstop=2 softtabstop=2
+
+" Set to round to proper indentation based on shiftwidth when using <>
+set shiftround
+
+" }}}
+
+" LINTING {{{
 " https://gist.github.com/romainl/ce55ce6fdc1659c5fbc0f4224fd6ad29
 
 augroup js_linting
@@ -267,6 +259,20 @@ augroup js_linting
   " run :make on the current file matching <pattern> whenever you :write it
   " autocmd BufWritePost *.js silent make! <afile> | silent redraw!
 augroup END
+
+" }}}
+
+" WSL {{{
+
+" WSL yank support 
+" https://www.reddit.com/r/bashonubuntuonwindows/comments/be2q3l/comment/el2vx7u/
+let s:clip = '/mnt/c/Windows/System32/clip.exe'  " change this path according to your mount point
+if executable(s:clip)
+    augroup WSLYank
+        autocmd!
+        autocmd TextYankPost * if v:event.operator ==# 'y' | call system(s:clip, @0) | endif
+    augroup END
+endif
 
 " }}}
 
@@ -311,7 +317,7 @@ noremap <PageDown> <C-d>zt
 
 " LEADER MAPPINGS {{{
 
-" Leader to space
+" space = leader
 nnoremap <SPACE> <Nop>
 let mapleader=" "
 
@@ -319,7 +325,13 @@ let mapleader=" "
 nnoremap <Leader>b :ls<CR>:b<Space>
 
 " leader c = fold top level
-nnoremap <Leader>c :%foldc<CR>
+" nnoremap <Leader>c :%foldc<CR>
+
+" leader c = comment out
+autocmd FileType javascript noremap <Leader>c :norm 0i// <CR>
+
+" leader C = undo comment
+autocmd FileType javascript noremap <Leader>C :norm 03x<CR>
 
 " leader d = delete without replacing register
 nnoremap <Leader>d "_d
@@ -334,41 +346,27 @@ nnoremap <Leader>E : <C-f>
 nnoremap <Leader>f za
 
 " leader h = toggle search highlighting
-" https://stackoverflow.com/questions/9054780/how-to-toggle-vims-search-highlight-visibility-without-disabling-it
-let hlstate=0
-nnoremap <Leader>h :if (hlstate == 0) \| nohlsearch \| else \| set hlsearch \| endif \| let hlstate=1-hlstate<cr>
+nnoremap <Leader>h :set hlsearch!<CR>
 
-" leader l = console.log
-nnoremap <Leader>l oconsole.log();<ESC>hi
+" leader l = log statement
+autocmd FileType javascript nnoremap <Leader>l oconsole.log();<ESC>hi
 
 " leader m = make current file
 nnoremap <Leader>m :make %<CR>
 
-" leader p = file finder
+" leader p = fuzzy file finder
 nnoremap <Leader>p :find *
 
 " leader q = quit
 nnoremap <Leader>q :q<CR>
 
-" leader r = run in node
-nnoremap <Leader>r :! node %<CR>
+" leader r = run program
+autocmd FileType javascript nnoremap <Leader>r :! node %<CR>
 
 " leader s = write
 nnoremap <Leader>s :w<CR>
 
-" leader t = shell
+" leader t = shell/terminal
 nnoremap <Leader>t :sh<CR>
-
-" leader / = comment out
-vnoremap <Leader>/ :norm I// <CR>
-
-" leader \ = remove comment
-vnoremap <Leader>\ :norm ^3x<CR>
-
-" }}}
-
-" {{{ SESSIONS
-
-set sessionoptions-=options
 
 " }}}
