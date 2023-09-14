@@ -316,7 +316,7 @@ noremap <PageDown> <C-d>zt
 " Closing braces
 " inoremap ( ()<Left>
 " inoremap [ []<Left>
-autocmd FileType javascript inoremap { {<CR>}<ESC>kA
+" autocmd FileType javascript inoremap { {<CR>}<ESC>kA
 
 " }}}
 
@@ -380,13 +380,13 @@ func Eatchar(pat)
 endfunc
 iabbr <silent> if if ()<Left><C-R>=Eatchar('\s')<CR>
 
-" ,b = code block in Markdown
-autocmd FileType markdown iabbrev ,b ```<CR>```<ESC>kA<C-R>=Eatchar('\s')<CR>
+" .,b = code block in Markdown
+autocmd FileType markdown iabbrev .,b ```<CR>```<ESC>kA<C-R>=Eatchar('\s')<CR>
 
 " add: fo = for of, fl = for loop, fi = for in
 
-" ,p = print (console.log in JavaScript)
+" .,p = print
 " https://vonheikemen.github.io/devlog/tools/using-vim-abbreviations/
-autocmd FileType javascript iabbrev ,p console.log();<Left><Left><C-R>=Eatchar('\s')<CR>
+autocmd FileType javascript iabbrev .,p console.log();<Left><Left><C-R>=Eatchar('\s')<CR>
 
 " }}}
