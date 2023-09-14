@@ -106,22 +106,22 @@ hi StatColor guibg=lightgreen guifg=black ctermbg=lightgreen ctermfg=black
 hi Modified guibg=lightred guifg=black ctermbg=lightred ctermfg=black
 
 function! MyStatusLine(mode)
-    let statusline=""
-    if a:mode == 'Enter'
-        let statusline.="%#StatColor#"
-    endif
-    let statusline.="\(%n\)\ %f\ "
-    if a:mode == 'Enter'
-        let statusline.="%*"
-    endif
-    let statusline.="%#Modified#%m"
-    if a:mode == 'Leave'
-        let statusline.="%*%r"
-    elseif a:mode == 'Enter'
-        let statusline.="%r%*"
-    endif
-    let statusline .= "\ (%l/%L,\ %c)\ %P%=%h%w\ %y\ [%{&encoding}:%{&fileformat}]\ \ "
-    return statusline
+  let statusline=""
+  if a:mode == 'Enter'
+    let statusline.="%#StatColor#"
+  endif
+  let statusline.="\(%n\)\ %f\ "
+  if a:mode == 'Enter'
+    let statusline.="%*"
+  endif
+  let statusline.="%#Modified#%m"
+  if a:mode == 'Leave'
+    let statusline.="%*%r"
+  elseif a:mode == 'Enter'
+    let statusline.="%r%*"
+  endif
+  let statusline .= "\ (%l/%L,\ %c)\ %P%=%h%w\ %y\ [%{&encoding}:%{&fileformat}]\ \ "
+  return statusline
 endfunction
 
 au WinEnter * setlocal statusline=%!MyStatusLine('Enter')
@@ -268,10 +268,10 @@ augroup END
 " https://www.reddit.com/r/bashonubuntuonwindows/comments/be2q3l/comment/el2vx7u/
 let s:clip = '/mnt/c/Windows/System32/clip.exe'  " change this path according to your mount point
 if executable(s:clip)
-    augroup WSLYank
-        autocmd!
-        autocmd TextYankPost * if v:event.operator ==# 'y' | call system(s:clip, @0) | endif
-    augroup END
+  augroup WSLYank
+    autocmd!
+    autocmd TextYankPost * if v:event.operator ==# 'y' | call system(s:clip, @0) | endif
+  augroup END
 endif
 
 " }}}
@@ -324,9 +324,6 @@ let mapleader=" "
 " leader b = list the available buffers and prepare :b for you
 nnoremap <Leader>b :ls<CR>:b<Space>
 
-" leader c = fold top level
-" nnoremap <Leader>c :%foldc<CR>
-
 " leader c = comment out
 autocmd FileType javascript noremap <Leader>c :norm 0i// <CR>
 
@@ -348,9 +345,6 @@ nnoremap <Leader>f za
 " leader h = toggle search highlighting
 nnoremap <Leader>h :set hlsearch!<CR>
 
-" leader l = log statement
-autocmd FileType javascript nnoremap <Leader>l oconsole.log();<ESC>hi
-
 " leader m = make current file
 nnoremap <Leader>m :make %<CR>
 
@@ -368,5 +362,26 @@ nnoremap <Leader>s :w<CR>
 
 " leader t = shell/terminal
 nnoremap <Leader>t :sh<CR>
+
+" }}}
+
+" {{{ ABBREVIATIONS
+
+" Eatchar function
+" https://stackoverflow.com/questions/11858927/preventing-trailing-whitespace-when-using-vim-abbreviations
+func Eatchar(pat)
+  let c = nr2char(getchar(0))
+  return (c =~ a:pat) ? '' : c
+endfunc
+iabbr <silent> if if ()<Left><C-R>=Eatchar('\s')<CR>
+
+" ,b = code block in Markdown
+autocmd FileType markdown iabbrev ,b ```<CR>```<ESC>kA<C-R>=Eatchar('\s')<CR>
+
+" add: fo = for of, fl = for loop, fi = for in
+
+" ,p = print (console.log in JavaScript)
+" https://vonheikemen.github.io/devlog/tools/using-vim-abbreviations/
+autocmd FileType javascript iabbrev ,p console.log();<Left><Left><C-R>=Eatchar('\s')<CR>
 
 " }}}
