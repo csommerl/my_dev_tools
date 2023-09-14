@@ -313,6 +313,11 @@ autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
 noremap <PageUp> <C-u>zt
 noremap <PageDown> <C-d>zt
 
+" Closing braces
+" inoremap ( ()<Left>
+" inoremap [ []<Left>
+autocmd FileType javascript inoremap { {<CR>}<ESC>kA
+
 " }}}
 
 " LEADER MAPPINGS {{{
