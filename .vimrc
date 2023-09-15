@@ -26,14 +26,22 @@ set undodir=~/.vim/undodir
 " Show filename in title bar
 set title
 
-" Transparent background
-hi Normal guibg=NONE ctermbg=NONE
-
 " True colors
 set termguicolors
 
-" Color theme
+" Color theme: catpuccin_frappe
+hi Normal guibg=NONE ctermbg=NONE
 colorscheme catppuccin_frappe
+"colorscheme catppuccin_latte
+
+" Color theme: gruvbox dark
+"options: 'hard', 'medium'(default), 'soft'
+"let g:gruvbox_material_background = 'medium'
+"options: light, dark
+"set background=dark
+" For better performance
+"let g:gruvbox_material_better_performance = 1
+"colorscheme gruvbox-material
 
 " Show line numbers
 set number
@@ -367,6 +375,12 @@ nnoremap <Leader>s :w<CR>
 
 " leader t = shell/terminal
 nnoremap <Leader>t :sh<CR>
+
+" leader ve = open vimrc
+nnoremap <Leader>ve :e ~/.vimrc<CR>
+
+" leader vs = source vimrc
+nnoremap <Leader>vs :source ~/.vimrc<CR>
 
 " }}}
 
