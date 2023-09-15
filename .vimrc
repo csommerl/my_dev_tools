@@ -21,20 +21,26 @@ set undodir=~/.vim/undodir
 
 " }}}
 
-" APPEARANCE {{{
-
-" Show filename in title bar
-set title
+" {{{ COLORSCHEME
 
 " True colors
 set termguicolors
 
-" Color theme: catpuccin_frappe
-hi Normal guibg=NONE ctermbg=NONE
-colorscheme catppuccin_frappe
+" scheme: catpuccin_frappe/latte
+"hi Normal guibg=NONE ctermbg=NONE
+"colorscheme catppuccin_frappe
 "colorscheme catppuccin_latte
 
-" Color theme: gruvbox dark
+" scheme: everforest
+"options: 'hard', 'medium'(default), 'soft'
+let g:everforest_background = 'medium'
+"options: light, dark
+set background=light
+" For better performance
+let g:everforest_better_performance = 1
+colorscheme everforest
+
+" scheme: gruvbox dark
 "options: 'hard', 'medium'(default), 'soft'
 "let g:gruvbox_material_background = 'medium'
 "options: light, dark
@@ -42,6 +48,22 @@ colorscheme catppuccin_frappe
 " For better performance
 "let g:gruvbox_material_better_performance = 1
 "colorscheme gruvbox-material
+
+" Underline/highlight current line
+set cursorline
+
+" Show column marking 80 character length
+set colorcolumn=80
+
+" Color options for color column
+"highlight ColorColumn ctermbg=white guibg=black
+
+" }}}
+
+" APPEARANCE {{{
+
+" Show filename in title bar
+set title
 
 " Show line numbers
 set number
@@ -57,15 +79,6 @@ set shortmess=a
 
 " Sign column
 set signcolumn=auto
-
-" Underline/highlight current line
-set cursorline
-
-" Show column marking 80 character length
-set colorcolumn=80
-
-" Color options for color column
-"highlight ColorColumn ctermbg=white guibg=black
 
 " Display at least 6 lines above and below cursor when scrolling
 set scrolloff=6
