@@ -27,24 +27,24 @@ set undodir=~/.vim/undodir
 set termguicolors
 
 " scheme: catpuccin_frappe/latte
-"hi Normal guibg=NONE ctermbg=NONE
-"colorscheme catppuccin_frappe
+hi Normal guibg=NONE ctermbg=NONE
+colorscheme catppuccin_frappe
 "colorscheme catppuccin_latte
 
 " scheme: everforest
 "options: 'hard', 'medium'(default), 'soft'
-let g:everforest_background = 'medium'
+"let g:everforest_background = 'medium'
 "options: light, dark
-set background=light
+"set background=dark
 " For better performance
-let g:everforest_better_performance = 1
-colorscheme everforest
+"let g:everforest_better_performance = 1
+"colorscheme everforest
 
-" scheme: gruvbox dark
+" scheme: gruvbox
 "options: 'hard', 'medium'(default), 'soft'
 "let g:gruvbox_material_background = 'medium'
 "options: light, dark
-"set background=dark
+"set background=light
 " For better performance
 "let g:gruvbox_material_better_performance = 1
 "colorscheme gruvbox-material
@@ -116,6 +116,9 @@ highlight markdownCodeDelimiter guifg=DarkYellow ctermfg=green
 
 " Change color of misspelled words
 "highlight SpellBad guibg=lightred ctermbg=lightred guifg=black ctermfg=black
+
+" show matching brace
+set showmatch matchtime=2
 
 " }}}
 
@@ -405,7 +408,7 @@ func Eatchar(pat)
   let c = nr2char(getchar(0))
   return (c =~ a:pat) ? '' : c
 endfunc
-iabbr <silent> if if ()<Left><C-R>=Eatchar('\s')<CR>
+" iabbr <silent> if if ()<Left><C-R>=Eatchar('\s')<CR>
 
 " .,b = code block in Markdown
 autocmd FileType markdown iabbrev .,b ```<CR>```<ESC>kA<C-R>=Eatchar('\s')<CR>
