@@ -418,5 +418,6 @@ autocmd FileType markdown iabbrev .,b ```<CR>```<ESC>kA<C-R>=Eatchar('\s')<CR>
 " .,p = print
 " https://vonheikemen.github.io/devlog/tools/using-vim-abbreviations/
 autocmd FileType javascript iabbrev .,p console.log();<Left><Left><C-R>=Eatchar('\s')<CR>
+autocmd FileType markdown iabbrev .,p console.log();<Left><Left><C-R>=Eatchar('\s')<CR>
 
 " }}}
