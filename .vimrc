@@ -27,27 +27,27 @@ set undodir=~/.vim/undodir
 set termguicolors
 
 " scheme: catpuccin_frappe/latte
-hi Normal guibg=NONE ctermbg=NONE
-colorscheme catppuccin_frappe
+"hi Normal guibg=NONE ctermbg=NONE
+"colorscheme catppuccin_frappe
 "colorscheme catppuccin_latte
 
 " scheme: everforest
 "options: 'hard', 'medium'(default), 'soft'
-"let g:everforest_background = 'medium'
+"let g:everforest_background = 'soft'
 "options: light, dark
-"set background=dark
+"set background=light
 " For better performance
 "let g:everforest_better_performance = 1
 "colorscheme everforest
 
 " scheme: gruvbox
 "options: 'hard', 'medium'(default), 'soft'
-"let g:gruvbox_material_background = 'medium'
+let g:gruvbox_material_background = 'soft'
 "options: light, dark
-"set background=light
+set background=light
 " For better performance
-"let g:gruvbox_material_better_performance = 1
-"colorscheme gruvbox-material
+let g:gruvbox_material_better_performance = 1
+colorscheme gruvbox-material
 
 " Underline/highlight current line
 set cursorline
