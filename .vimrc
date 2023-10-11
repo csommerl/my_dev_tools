@@ -400,11 +400,14 @@ nnoremap <Leader>s :w<CR>
 " leader t = shell/terminal
 nnoremap <Leader>t :sh<CR>
 
-" leader ve = open vimrc
-nnoremap <Leader>ve :e ~/.vimrc<CR>
+" leader w = vsplit
+nnoremap <Leader>w :vsplit 
 
-" leader vs = source vimrc
-nnoremap <Leader>vs :source ~/.vimrc<CR>
+" leader ,e = open vimrc
+nnoremap <Leader>,e :e ~/.vimrc<CR>
+
+" leader ,s = source vimrc
+nnoremap <Leader>,s :source ~/.vimrc<CR>
 
 " }}}
 
