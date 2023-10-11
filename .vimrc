@@ -27,27 +27,27 @@ set undodir=~/.vim/undodir
 set termguicolors
 
 " scheme: catpuccin_frappe/latte
-"hi Normal guibg=NONE ctermbg=NONE
-"colorscheme catppuccin_frappe
+hi Normal guibg=NONE ctermbg=NONE
+colorscheme catppuccin_frappe
 "colorscheme catppuccin_latte
 
 " scheme: everforest
 "options: 'hard', 'medium'(default), 'soft'
 "let g:everforest_background = 'soft'
 "options: light, dark
-"set background=light
+"set background=dark
 " For better performance
 "let g:everforest_better_performance = 1
 "colorscheme everforest
 
 " scheme: gruvbox
 "options: 'hard', 'medium'(default), 'soft'
-let g:gruvbox_material_background = 'soft'
+"let g:gruvbox_material_background = 'soft'
 "options: light, dark
-set background=light
+"set background=dark
 " For better performance
-let g:gruvbox_material_better_performance = 1
-colorscheme gruvbox-material
+"let g:gruvbox_material_better_performance = 1
+"colorscheme gruvbox-material
 
 " Underline/highlight current line
 set cursorline
@@ -187,6 +187,21 @@ let g:netrw_bufsettings = 'noma nomod nu nowrap ro nobl'
 
 " }}}
 
+" FUZZY FILE FINDER {{{
+" https://github.com/changemewtf/no_plugins
+" https://www.youtube.com/watch?v=XA2WjJbmmoM&t
+
+" Search through every subdirectory, recursively
+set path+=**
+
+" Display all matching files when we tab complete
+set wildmenu
+
+" Ignore these files & directories
+set wildignore+=*.git/*,*node_modules/*,package-lock.json,package.json
+
+" }}}
+
 " SEARCH {{{
 
 " Ignore case in search except when typing capital characters 
@@ -208,18 +223,11 @@ set tags=./tags,tags;
 
 " }}}
 
-" FUZZY FILE FINDER {{{
-" https://github.com/changemewtf/no_plugins
-" https://www.youtube.com/watch?v=XA2WjJbmmoM&t
+" SPLITS {{{
 
-" Search through every subdirectory, recursively
-set path+=**
-
-" Display all matching files when we tab complete
-set wildmenu
-
-" Ignore these files & directories
-set wildignore+=*.git/*,*node_modules/*,package-lock.json,package.json
+" change the direction of new splits
+set splitbelow
+set splitright
 
 " }}}
 
