@@ -1,5 +1,7 @@
 # Vim Mods
 
+[function for swapping between dark and light modes](https://learnvim.irian.to/vimscript/vimscript_functions)
+
 [Tags](https://learnvim.irian.to/basics/tags)
 - universal ctags setup: https://askubuntu.com/questions/796408/installing-and-using-universal-ctags-instead-of-exuberant-ctags
 - tagbar: https://github.com/preservim/tagbar
