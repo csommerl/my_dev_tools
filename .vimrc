@@ -400,8 +400,11 @@ nnoremap <Leader>s :w<CR>
 " leader t = shell/terminal
 nnoremap <Leader>t :sh<CR>
 
-" leader w = vsplit
-nnoremap <Leader>w :vsplit 
+" leader wv = vsplit
+nnoremap <Leader>wv :vsplit 
+
+" leader ww = switch window
+nnoremap <Leader>ww <C-W>w
 
 " leader ,e = open vimrc
 nnoremap <Leader>,e :e ~/.vimrc<CR>
