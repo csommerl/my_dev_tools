@@ -381,6 +381,9 @@ noremap <PageDown> <C-d>zt
 nnoremap <SPACE> <Nop>
 let mapleader=" "
 
+" leader space space = switch window
+nnoremap <Leader><SPACE> <C-w>w
+
 " leader b = list the available buffers and prepare :b for you
 nnoremap <Leader>b :ls<CR>:b<Space>
 
@@ -425,9 +428,6 @@ nnoremap <Leader>t :sh<CR>
 
 " leader wv = vsplit
 nnoremap <Leader>wv :vsplit 
-
-" leader ww = switch window
-nnoremap <Leader>ww <C-W>w
 
 " leader ,e = open vimrc
 nnoremap <Leader>,e :e ~/.vimrc<CR>

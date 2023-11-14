@@ -9,11 +9,7 @@
 
 autocomplete braces
 
-tab indent
-
 No plugins: https://gist.github.com/chris-marsh/a482db63f8fdb42a05d5966b494d15dc
-
-add undo history
 
 K = split line
 
@@ -69,19 +65,14 @@ use plugins with nvim
 K
 M
 Q
-U
-Y
 Z
 Home to scroll up
 End to scroll dow
-- tab
 - hyphen
-- back tick
 - caps lock
 - quote
 - K (to %?)
 - Y to Y$
-- =
 - shift enter
 - delete
 \
