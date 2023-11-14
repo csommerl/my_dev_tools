@@ -279,6 +279,37 @@ set shiftround
 
 " }}}
 
+" TAB AUTOCOMPLETE {{{
+" https://vim.fandom.com/wiki/Smart_mapping_for_tab_completion
+
+" Remap TAB to keyword completion
+function! InsertTabWrapper(direction)
+  let col = col('.') - 1
+  if !col || getline('.')[col - 1] !~ '\k'
+    return "\<tab>"
+  elseif "backward" == a:direction
+    return "\<c-p>"
+  elseif "forward" == a:direction
+    return "\<c-n>"
+  else
+    return "\<c-x>\<c-k>"
+  endif
+endfunction
+
+inoremap <tab> <c-r>=InsertTabWrapper ("forward")<CR>
+inoremap <s-tab> <c-r>=InsertTabWrapper ("backward")<CR>
+inoremap <c-tab> <c-r>=InsertTabWrapper ("startkey")<CR>
+
+" tell complete to look in the dictionary
+set complete-=k complete+=k
+
+" load the dictionary according to syntax
+:au BufReadPost * if exists("b:current_syntax")
+:au BufReadPost * let &dictionary = substitute("C:\\vim\\vimfiles\\dict\\FT.dict", "FT", b:current_syntax, "")
+:au BufReadPost * endif
+
+" }}}
+
 " LINTING {{{
 " https://gist.github.com/romainl/ce55ce6fdc1659c5fbc0f4224fd6ad29
 
