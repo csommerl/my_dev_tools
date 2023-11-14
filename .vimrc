@@ -300,14 +300,6 @@ inoremap <tab> <c-r>=InsertTabWrapper ("forward")<CR>
 inoremap <s-tab> <c-r>=InsertTabWrapper ("backward")<CR>
 inoremap <c-tab> <c-r>=InsertTabWrapper ("startkey")<CR>
 
-" tell complete to look in the dictionary
-set complete-=k complete+=k
-
-" load the dictionary according to syntax
-:au BufReadPost * if exists("b:current_syntax")
-:au BufReadPost * let &dictionary = substitute("C:\\vim\\vimfiles\\dict\\FT.dict", "FT", b:current_syntax, "")
-:au BufReadPost * endif
-
 " }}}
 
 " LINTING {{{
