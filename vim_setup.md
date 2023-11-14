@@ -72,7 +72,6 @@ End to scroll dow
 - caps lock
 - quote
 - K (to %?)
-- Y to Y$
 - shift enter
 - delete
 \

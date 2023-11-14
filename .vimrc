@@ -352,8 +352,8 @@ noremap U <C-r>
 " Y = yank to end of line
 noremap Y y$
 
-" BS = top of previous buffer, in Normal
-nnoremap <BS> <C-^>zt
+" BS = go back in jump list
+nnoremap <BS> <C-o>
 
 " <C-u> & <C-d>: keep cursor at top
 nnoremap <C-u> <C-u>zt
@@ -381,8 +381,11 @@ noremap <PageDown> <C-d>zt
 nnoremap <SPACE> <Nop>
 let mapleader=" "
 
-" leader space space = switch window
-nnoremap <Leader><SPACE> <C-w>w
+" leader space = top of previous buffer, in Normal
+nnoremap <Leader><SPACE> <C-^>zt
+
+" leader backspace = switch window
+nnoremap <Leader><BS> <C-w>w
 
 " leader b = list the available buffers and prepare :b for you
 nnoremap <Leader>b :ls<CR>:b<Space>
