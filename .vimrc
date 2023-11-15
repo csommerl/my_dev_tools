@@ -341,6 +341,10 @@ nnoremap ]b :bnext<CR>zt
 noremap H ^
 noremap L $
 
+" M & K = backward and forward in changelist, at top of screen, in normal mode
+nnoremap M g;zt
+nnoremap K g,zt
+
 " n & N = next & previous search result, at top of screen, in Normal
 " https://stackoverflow.com/questions/45866451/put-the-search-results-at-the-top-of-the-screen-in-vi
 nnoremap n nzt
@@ -353,7 +357,7 @@ noremap U <C-r>
 noremap Y y$
 
 " BS = go back in jump list
-nnoremap <BS> <C-o>
+nnoremap <BS> <C-o>zt
 
 " <C-u> & <C-d>: keep cursor at top
 nnoremap <C-u> <C-u>zt

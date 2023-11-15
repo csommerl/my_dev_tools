@@ -1,5 +1,13 @@
 # Vim Mods
 
+shortcuts for jumplist:
+- tab to go forward (default)
+- bsp to go backward (ctrl+o)
+
+shortcuts for changelist:
+- M to go backward (g;)
+- K to go forward (g,)
+
 [function for swapping between dark and light modes](https://learnvim.irian.to/vimscript/vimscript_functions)
 
 [Tags](https://learnvim.irian.to/basics/tags)
