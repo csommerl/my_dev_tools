@@ -1,12 +1,6 @@
 # Vim Mods
 
-shortcuts for jumplist:
-- tab to go forward (default)
-- bsp to go backward (ctrl+o)
-
-shortcuts for changelist:
-- M to go backward (g;)
-- K to go forward (g,)
+vim autocomplete dictionary file for javascript?
 
 [function for swapping between dark and light modes](https://learnvim.irian.to/vimscript/vimscript_functions)
 
@@ -18,8 +12,6 @@ shortcuts for changelist:
 autocomplete braces
 
 No plugins: https://gist.github.com/chris-marsh/a482db63f8fdb42a05d5966b494d15dc
-
-K = split line
 
 shortcut to move lines up & down: https://vimtricks.com/p/vimtrick-moving-lines/
 
@@ -70,16 +62,12 @@ use plugins with nvim
 
 ## Keys to Remap
 
-K
-M
 Q
 Z
 Home to scroll up
 End to scroll dow
 - hyphen
 - caps lock
-- quote
-- K (to %?)
 - shift enter
 - delete
 \
@@ -87,19 +75,15 @@ End to scroll dow
 _
 -
 +
-@
 alt
 !
-^
 &
 *
 
 
 ## Macros to add
 
-- toggle highlighting with :....!
 - search for TODO
-- ignore case in search except for title case
 
 ## add comment to vimrc
 

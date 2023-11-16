@@ -93,6 +93,10 @@ autocmd FileType text setlocal wrap linebreak spell
 " Show only top 15 options, so that the window isn't taken over
 set spellsuggest=15
 
+" Display whitespace for trailing characters
+set list
+set listchars=tab:│·,nbsp:␣,trail:·,extends:⟩,precedes:⟨
+
 " }}}
 
 " SYNTAX HIGHLIGHTING {{{
@@ -204,7 +208,7 @@ set wildignore+=*.git/*,*node_modules/*,package-lock.json,package.json
 
 " SEARCH {{{
 
-" Ignore case in search except when typing capital characters 
+" Ignore case in search except when typing capital characters (also applies to autocomplete)
 set ignorecase smartcase
 
 " Search does not wrap around end of file
