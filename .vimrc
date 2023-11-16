@@ -93,9 +93,12 @@ autocmd FileType text setlocal wrap linebreak spell
 " Show only top 15 options, so that the window isn't taken over
 set spellsuggest=15
 
-" Display whitespace for trailing characters
+" Display special characters for whitespace, etc.
 set list
 set listchars=tab:│·,nbsp:␣,trail:·,extends:⟩,precedes:⟨
+" But don't show trailing whitespace in insert mode
+autocmd InsertEnter * set listchars-=trail:·
+autocmd InsertLeave * set listchars+=trail:·
 
 " }}}
 
