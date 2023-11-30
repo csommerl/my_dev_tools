@@ -68,8 +68,13 @@ set title
 " Show line numbers
 set number
 
-" Show relative line numbers
-"set relativenumber
+" Use relative numbers in normal mode only for an active buffer; use absolute numbers everywhere else.
+" https://www.reddit.com/r/vim/comments/t9lm4x/whats_your_best_autocmd/
+augroup numbertoggle
+  autocmd!
+  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+augroup END
 
 " Show commands in bottom right
 set showcmd
