@@ -69,7 +69,7 @@ set title
 set number
 
 " Show relative line numbers
-set relativenumber
+"set relativenumber
 
 " Show commands in bottom right
 set showcmd
@@ -261,6 +261,13 @@ augroup END
 " {{{ SESSIONS
 
 set sessionoptions-=options
+
+" Remember folds: https://stackoverflow.com/questions/37552913/vim-how-to-keep-folds-on-save
+augroup remember_folds
+  autocmd!
+  autocmd BufWinLeave *.* mkview
+  autocmd BufWinEnter *.* silent! loadview
+augroup END
 
 " }}}
 
