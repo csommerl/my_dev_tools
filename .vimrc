@@ -455,6 +455,9 @@ nnoremap <Leader>t :sh<CR>
 " leader wv = vsplit
 nnoremap <Leader>wv :vsplit 
 
+" leader z = save session
+nnoremap <Leader>z :mks!<CR>
+
 " leader ,e = open vimrc
 nnoremap <Leader>,e :e ~/.vimrc<CR>
 
