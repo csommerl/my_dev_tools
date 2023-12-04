@@ -434,6 +434,9 @@ nnoremap <Leader>f za
 " leader h = toggle search highlighting
 nnoremap <Leader>h :set hlsearch!<CR>
 
+" leader k = save session
+nnoremap <Leader>k :mks!<CR>
+
 " leader m = make current file
 nnoremap <Leader>m :make %<CR>
 
@@ -455,8 +458,9 @@ nnoremap <Leader>t :sh<CR>
 " leader wv = vsplit
 nnoremap <Leader>wv :vsplit 
 
-" leader z = save session
-nnoremap <Leader>z :mks!<CR>
+" leader z = open current split in own tab and keep cursor pos
+" https://vi.stackexchange.com/questions/36795/how-to-toggle-back-after-previous-view-when-using-only-command-on-vim
+nnoremap <Leader>z mx:tabedit %<CR>g`x
 
 " leader ,e = open vimrc
 nnoremap <Leader>,e :e ~/.vimrc<CR>
