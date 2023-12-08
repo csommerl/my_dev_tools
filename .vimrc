@@ -490,7 +490,4 @@ autocmd FileType markdown iabbrev .,b ```<CR>```<ESC>kA<C-R>=Eatchar('\s')<CR>
 autocmd FileType javascript iabbrev .,p console.log();<Left><Left><C-R>=Eatchar('\s')<CR>
 autocmd FileType markdown iabbrev .,p console.log();<Left><Left><C-R>=Eatchar('\s')<CR>
 
-" insert mode zt
-iabbrev .,z <C-o>zt<C-R>=Eatchar('\s')<CR>
-
 " }}}
