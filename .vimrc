@@ -265,6 +265,7 @@ augroup END
 
 " {{{ SESSIONS
 
+" to make my font changes for markdown persist, among other things
 set sessionoptions-=options
 
 " Remember folds: https://stackoverflow.com/questions/37552913/vim-how-to-keep-folds-on-save
@@ -273,6 +274,9 @@ augroup remember_folds
   autocmd BufWinLeave *.* mkview
   autocmd BufWinEnter *.* silent! loadview
 augroup END
+
+" prevent working directory from changing due to the above
+set viewoptions-=curdir
 
 " }}}
 
