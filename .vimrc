@@ -382,10 +382,6 @@ noremap Y y$
 " BS = go back in jump list
 nnoremap <BS> <C-o>zt
 
-" <C-u> & <C-d>: keep cursor at top
-nnoremap <C-u> <C-u>zt
-nnoremap <C-d> <C-d>zt
-
 " <CR> = colon, except in quickfix in Normal, Visual, Select, Operator-pending
 noremap <CR><CR> <CR>
 noremap <CR> :
@@ -394,6 +390,16 @@ autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
 " PageUp & PageDown = half up & down in Normal, Visual, Select, Operator-pending
 noremap <PageUp> <C-u>zt
 noremap <PageDown> <C-d>zt
+
+" <C-u> & <C-d> = keep cursor at top
+nnoremap <C-u> <C-u>zt
+nnoremap <C-d> <C-d>zt
+
+" <C-l> = in insert mode, fixes the last spelling mistake and returns cursor position
+inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
+
+" <C-z> = in insert mode, repositions to top of screen
+inoremap <C-z> <C-o>zt
 
 " Closing braces
 " inoremap ( ()<Left>
