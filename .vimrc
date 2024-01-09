@@ -395,11 +395,12 @@ noremap <PageDown> <C-d>zt
 nnoremap <C-u> <C-u>zt
 nnoremap <C-d> <C-d>zt
 
-" <C-l> = in insert mode, fixes the last spelling mistake and returns cursor position
-inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
+" <C-h> = repositions to top of screen
+inoremap <C-h> <C-o>zt
+noremap <C-h> zt
 
-" <C-z> = in insert mode, repositions to top of screen
-inoremap <C-z> <C-o>zt
+" <C-s> = in insert mode, fixes the last spelling mistake and returns cursor position
+inoremap <C-s> <c-g>u<Esc>[s1z=`]a<c-g>u
 
 " Closing braces
 " inoremap ( ()<Left>
