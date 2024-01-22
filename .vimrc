@@ -412,7 +412,7 @@ vnoremap <c-k> :m '<-2<CR>gv=gv
 " <C-s> = in insert mode, fixes the last spelling mistake and returns cursor position
 inoremap <C-s> <c-g>u<Esc>[s1z=`]a<c-g>u
 
-" <C-Left> and <C-Right> switch between tabs
+" <C-Left> and <C-Right> switch between tabs (equivalent to using ctrl with PageUp and PageDown)
 nnoremap <C-Left> :tabprevious<CR>
 nnoremap <C-Right> :tabnext<CR>
 
