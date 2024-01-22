@@ -399,6 +399,16 @@ nnoremap <C-d> <C-d>zt
 inoremap <C-h> <C-o>zt
 noremap <C-h> zt
 
+" <ctrl-j> = Move current line down
+" <ctrl-k> = Move current line up
+" using the latter in insert mode replaces insertion of digraphs
+nnoremap <c-j> :m .+1<CR>==
+nnoremap <c-k> :m .-2<CR>==
+inoremap <c-j> <Esc>:m .+1<CR>==gi
+inoremap <c-k> <Esc>:m .-2<CR>==gi
+vnoremap <c-j> :m '>+1<CR>gv=gv
+vnoremap <c-k> :m '<-2<CR>gv=gv
+
 " <C-s> = in insert mode, fixes the last spelling mistake and returns cursor position
 inoremap <C-s> <c-g>u<Esc>[s1z=`]a<c-g>u
 
