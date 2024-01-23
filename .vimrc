@@ -356,73 +356,81 @@ endif
 
 " KEY MAPPINGS {{{
 
-" [b & ]b = previous buffer and next buffer, at top of screen
+" [b & ]b = previous buffer and next buffer, at top of screen, in Normal mode
 nnoremap [b :bprevious<CR>zt
 nnoremap ]b :bnext<CR>zt
 
-" remap j and k to navigate wordwraps, but not when using with numbers
-nnoremap <expr> j (v:count > 1 ? "m'" . v:count . 'j' : 'gj')
-nnoremap <expr> k (v:count > 1 ? "m'" . v:count . 'k' : 'gk')
+" remap up and down to navigate wordwraps, in Insert, Normal, and Visual modes
+inoremap <up> <C-O>gk
+inoremap <down> <C-O>gj
+nnoremap <up> gk
+nnoremap <down> gj
+vnoremap <up> gk
+vnoremap <down> gj
 
-" remap gj and gk to ignore wordwraps (reversing their use)
-nnoremap gj j
-nnoremap gk k
-
-" H & L = start & end of line in Normal, Visual, Select, Operator-pending
+" H & L = start & end of line, in Normal, Visual, Select, Operator-pending modes
 noremap H ^
 noremap L $
 
-" M & K = backward and forward in changelist, at top of screen, in normal mode
+" M & K = backward and forward in changelist, at top of screen, in Normal mode
 nnoremap M g;zt
 nnoremap K g,zt
 
-" n & N = next & previous search result, at top of screen, in Normal
+" n & N = next & previous search result, at top of screen, in Normal mode
 " https://stackoverflow.com/questions/45866451/put-the-search-results-at-the-top-of-the-screen-in-vi
 nnoremap n nzt
 nnoremap N Nzt
 
-" U = redo
+" U = redo, in Normal, Visual, Select, Operator-pending modes
 noremap U <C-r>
 
-" Y = yank to end of line
+" Y = yank to end of line, in Normal, Visual, Select, Operator-pending modes
 noremap Y y$
 
-" BS = go back in jump list
+" using < and > keep selection, in Visual mode
+vmap > >gv
+vmap < <gv
+
+" BS = go back in jump list, in Normal mode
 nnoremap <BS> <C-o>zt
 
-" <CR> = colon, except in quickfix in Normal, Visual, Select, Operator-pending
+" Enter/<CR> = colon, except in quickfix, in Normal, Visual, Select, Operator-pending modes
 noremap <CR><CR> <CR>
 noremap <CR> :
 autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
 
-" PageUp & PageDown = half up & down in Normal, Visual, Select, Operator-pending
+" PageUp & PageDown = half up & down, in Normal, Visual, Select, Operator-pending modes
 noremap <PageUp> <C-u>zt
 noremap <PageDown> <C-d>zt
 
-" <C-u> & <C-d> = keep cursor at top
+" <C-u> & <C-d> = keep cursor at top, in Normal mode
 nnoremap <C-u> <C-u>zt
 nnoremap <C-d> <C-d>zt
 
-" <C-h> = repositions to top of screen
+" <C-h> = repositions to top of screen, in Insert and Normal modes
 inoremap <C-h> <C-o>zt
 noremap <C-h> zt
 
-" <ctrl-j> = Move current line down
-" <ctrl-k> = Move current line up
-" using the latter in insert mode replaces insertion of digraphs
-nnoremap <c-j> :m .+1<CR>==
-nnoremap <c-k> :m .-2<CR>==
-inoremap <c-j> <Esc>:m .+1<CR>==gi
-inoremap <c-k> <Esc>:m .-2<CR>==gi
-vnoremap <c-j> :m '>+1<CR>gv=gv
-vnoremap <c-k> :m '<-2<CR>gv=gv
+" <ctrl-j> and <ctrl-k> = Move current lines up and down, in Normal, Insert, and Visual modes
+" warning: remapping <ctrl-k> in insert mode replaces insertion of digraphs
+nnoremap <C-j> :m .+1<CR>==
+nnoremap <C-k> :m .-2<CR>==
+inoremap <C-j> <Esc>:m .+1<CR>==gi
+inoremap <C-k> <Esc>:m .-2<CR>==gi
+vnoremap <C-j> :m '>+1<CR>gv=gv
+vnoremap <C-k> :m '<-2<CR>gv=gv
 
-" <C-s> = in insert mode, fixes the last spelling mistake and returns cursor position
+" <C-s> = fixes the last spelling mistake and returns cursor position, in Insert mode
 inoremap <C-s> <c-g>u<Esc>[s1z=`]a<c-g>u
 
-" <C-Left> and <C-Right> switch between tabs (equivalent to using ctrl with PageUp and PageDown)
+" <C-Left> and <C-Right> switch between tabs (equivalent to using ctrl with PageUp and PageDown), in Normal mode
 nnoremap <C-Left> :tabprevious<CR>
 nnoremap <C-Right> :tabnext<CR>
+
+" map <F3> and <S-F3> to jump between locations in a quickfix list, or differences if in window in diff mode
+" latter doesn't work due to https://superuser.com/questions/508655/map-shift-f3-in-vimrc
+nnoremap <expr> <silent> <F3>   (&diff ? "]c" : ":cnext\<CR>")
+nnoremap <expr> <silent> <S-F3> (&diff ? "[c" : ":cprev\<CR>")
 
 " Closing braces
 " inoremap ( ()<Left>
