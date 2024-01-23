@@ -360,6 +360,14 @@ endif
 nnoremap [b :bprevious<CR>zt
 nnoremap ]b :bnext<CR>zt
 
+" remap j and k to navigate wordwraps, but not when using with numbers
+nnoremap <expr> j (v:count > 1 ? "m'" . v:count . 'j' : 'gj')
+nnoremap <expr> k (v:count > 1 ? "m'" . v:count . 'k' : 'gk')
+
+" remap gj and gk to ignore wordwraps (reversing their use)
+nnoremap gj j
+nnoremap gk k
+
 " H & L = start & end of line in Normal, Visual, Select, Operator-pending
 noremap H ^
 noremap L $
