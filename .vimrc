@@ -403,7 +403,7 @@ autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
 noremap <PageUp> <C-u>zt
 noremap <PageDown> <C-d>zt
 
-" <C-u> & <C-d> = keep cursor at top, in Normal mode
+" <C-u> & <C-d> keep cursor at top, in Normal mode
 nnoremap <C-u> <C-u>zt
 nnoremap <C-d> <C-d>zt
 
@@ -485,7 +485,7 @@ nnoremap <Leader>m :make %<CR>
 nnoremap <Leader>p :find *
 
 " leader q = quit
-nnoremap <Leader>q :q<CR>
+"nnoremap <Leader>q :q<CR>
 
 " leader r = run program
 autocmd FileType javascript nnoremap <Leader>r :! node %<CR>
