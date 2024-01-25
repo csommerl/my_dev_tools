@@ -1,5 +1,7 @@
 # Vim Mods
 
+use leader ,[char] for odd things
+
 vim autocomplete dictionary file for javascript?
 
 [function for swapping between dark and light modes](https://learnvim.irian.to/vimscript/vimscript_functions)
@@ -64,8 +66,8 @@ use plugins with nvim
 
 Q
 Z
-Home to scroll up
-End to scroll dow
+Home in Normal Mode
+End in Normal Mode
 - hyphen
 - caps lock
 - shift enter

@@ -421,16 +421,26 @@ vnoremap <C-j> :m '>+1<CR>gv=gv
 vnoremap <C-k> :m '<-2<CR>gv=gv
 
 " <C-s> = fixes the last spelling mistake and returns cursor position, in Insert mode
+" TOUSE
 inoremap <C-s> <c-g>u<Esc>[s1z=`]a<c-g>u
 
 " <C-Left> and <C-Right> switch between tabs (equivalent to using ctrl with PageUp and PageDown), in Normal mode
+" TOUSE
 nnoremap <C-Left> :tabprevious<CR>
 nnoremap <C-Right> :tabnext<CR>
 
-" map <F3> and <S-F3> to jump between locations in a quickfix list, or differences if in window in diff mode
-" latter doesn't work due to https://superuser.com/questions/508655/map-shift-f3-in-vimrc
-nnoremap <expr> <silent> <F3>   (&diff ? "]c" : ":cnext\<CR>")
-nnoremap <expr> <silent> <S-F3> (&diff ? "[c" : ":cprev\<CR>")
+" F1 = open vimrc
+" TOUSE
+nnoremap <F1> :e ~/.vimrc<CR>
+
+" F2 = source vimrc
+" TOUSE
+nnoremap <F2> :source ~/.vimrc<CR>
+
+" map <F3> and <F4> to jump between locations in a quickfix list, or differences if in window in diff mode
+" TOUSE
+nnoremap <expr> <silent> <F4> (&diff ? "]c" : ":cnext\<CR>")
+nnoremap <expr> <silent> <F3> (&diff ? "[c" : ":cprev\<CR>")
 
 " Closing braces
 " inoremap ( ()<Left>
@@ -461,12 +471,14 @@ autocmd FileType javascript noremap <Leader>c :norm 0i// <CR>
 autocmd FileType javascript noremap <Leader>C :norm 03x<CR>
 
 " leader d = delete without replacing register
+" TOUSE
 nnoremap <Leader>d "_d
 
 " leader e = explorer and show directory
 nnoremap <Leader>e :e <C-d>
 
 " leader E = show ex command history
+" TOUSE
 nnoremap <Leader>E : <C-f>
 
 " leader f = toggle fold
@@ -484,9 +496,6 @@ nnoremap <Leader>m :make %<CR>
 " leader p = fuzzy file finder
 nnoremap <Leader>p :find *
 
-" leader q = quit
-"nnoremap <Leader>q :q<CR>
-
 " leader r = run program
 autocmd FileType javascript nnoremap <Leader>r :! node %<CR>
 
@@ -502,12 +511,6 @@ nnoremap <Leader>wv :vsplit
 " leader z = open current split in own tab and keep cursor pos
 " https://vi.stackexchange.com/questions/36795/how-to-toggle-back-after-previous-view-when-using-only-command-on-vim
 nnoremap <Leader>z mx:tabedit %<CR>g`x
-
-" leader ,e = open vimrc
-nnoremap <Leader>,e :e ~/.vimrc<CR>
-
-" leader ,s = source vimrc
-nnoremap <Leader>,s :source ~/.vimrc<CR>
 
 " }}}
 
