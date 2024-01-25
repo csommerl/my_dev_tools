@@ -64,6 +64,7 @@ use plugins with nvim
 
 ## Keys to Remap
 
+Function keys
 Q
 Z
 Home in Normal Mode

@@ -442,6 +442,10 @@ nnoremap <F2> :source ~/.vimrc<CR>
 nnoremap <expr> <silent> <F4> (&diff ? "]c" : ":cnext\<CR>")
 nnoremap <expr> <silent> <F3> (&diff ? "[c" : ":cprev\<CR>")
 
+" F7 = toggle relative & absolute line numbers
+" TOUSE
+nnoremap <F7> :set invrnu
+
 " Closing braces
 " inoremap ( ()<Left>
 " inoremap [ []<Left>
