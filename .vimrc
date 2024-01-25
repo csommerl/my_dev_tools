@@ -70,7 +70,7 @@ set number
 
 " Use relative numbers in normal mode only for an active buffer; use absolute numbers everywhere else.
 " https://www.reddit.com/r/vim/comments/t9lm4x/whats_your_best_autocmd/
-augroup numbertoggle
+augroup number_toggle
   autocmd!
   autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
   autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
@@ -92,8 +92,11 @@ set scrolloff=6
 set nowrap
 
 " Word wrap, line breaks, & spellcheck for Markdown & text files
-autocmd FileType markdown setlocal wrap linebreak spell
-autocmd FileType text setlocal wrap linebreak spell
+augroup file_type_formatting
+  autocmd!
+  autocmd FileType markdown setlocal wrap linebreak spell
+  autocmd FileType text setlocal wrap linebreak spell
+augroup END
 
 " Show only top 15 options, so that the window isn't taken over
 set spellsuggest=15
@@ -102,8 +105,11 @@ set spellsuggest=15
 set list
 set listchars=tab:│·,nbsp:␣,trail:·,extends:⟩,precedes:⟨
 " But don't show trailing whitespace in insert mode
-autocmd InsertEnter * set listchars-=trail:·
-autocmd InsertLeave * set listchars+=trail:·
+augroup no_insert_trailing_whitespace
+  autocmd!
+  autocmd InsertEnter * set listchars-=trail:·
+  autocmd InsertLeave * set listchars+=trail:·
+augroup END
 
 " }}}
 
@@ -251,13 +257,9 @@ set foldlevelstart=99
 " Markdown folding
 let g:markdown_folding = 1
 
-augroup vim_folding
+augroup my_folding
   autocmd!
   autocmd FileType vim setlocal foldmethod=marker foldmarker={{{,}}}
-augroup END
-
-augroup js_folding
-  autocmd!
   autocmd FileType javascript setlocal foldmethod=marker foldmarker={,}
 augroup END
 
@@ -293,9 +295,12 @@ set smarttab
 set expandtab
 
 " Settings for filetypes
-autocmd FileType javascript setlocal shiftwidth=2 tabstop=2 softtabstop=2
-autocmd FileType python setlocal shiftwidth=4 tabstop=4 softtabstop=4
-autocmd FileType markdown setlocal shiftwidth=2 tabstop=2 softtabstop=2
+augroup filetype_indentation
+  autocmd!
+  autocmd FileType javascript setlocal shiftwidth=2 tabstop=2 softtabstop=2
+  autocmd FileType python setlocal shiftwidth=4 tabstop=4 softtabstop=4
+  autocmd FileType markdown setlocal shiftwidth=2 tabstop=2 softtabstop=2
+augroup END
 
 " Set to round to proper indentation based on shiftwidth when using <>
 set shiftround
@@ -397,7 +402,7 @@ nnoremap <BS> <C-o>zt
 " Enter/<CR> = colon, except in quickfix, in Normal, Visual, Select, Operator-pending modes
 noremap <CR><CR> <CR>
 noremap <CR> :
-autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
+autocmd! BufReadPost quickfix nnoremap <buffer> <CR> <CR>
 
 " PageUp & PageDown = half up & down, in Normal, Visual, Select, Operator-pending modes
 noremap <PageUp> <C-u>zt
@@ -449,7 +454,7 @@ nnoremap <F7> :set invrnu
 " Closing braces
 " inoremap ( ()<Left>
 " inoremap [ []<Left>
-" autocmd FileType javascript inoremap { {<CR>}<ESC>kA
+" autocmd! FileType javascript inoremap { {<CR>}<ESC>kA
 
 " }}}
 
@@ -468,11 +473,14 @@ nnoremap <Leader><BS> <C-w>w
 " leader b = list the available buffers and prepare :b for you
 nnoremap <Leader>b :ls<CR>:b<Space>
 
-" leader c = comment out
-autocmd FileType javascript noremap <Leader>c :norm 0i// <CR>
-
-" leader C = undo comment
-autocmd FileType javascript noremap <Leader>C :norm 03x<CR>
+" leader c = comment out and leader C = undo comment
+augroup commenting
+  autocmd!
+  autocmd FileType javascript noremap <Leader>c :norm 0i// <CR>
+  autocmd FileType javascript noremap <Leader>C :norm 03x<CR>
+  autocmd FileType python noremap <Leader>c :norm 0i# <CR>
+  autocmd FileType python noremap <Leader>C :norm 02x<CR>
+augroup END
 
 " leader d = delete without replacing register
 " TOUSE
@@ -501,7 +509,11 @@ nnoremap <Leader>m :make %<CR>
 nnoremap <Leader>p :find *
 
 " leader r = run program
-autocmd FileType javascript nnoremap <Leader>r :! node %<CR>
+augroup run_program
+  autocmd!
+  autocmd FileType javascript nnoremap <Leader>r :! node %<CR>
+  autocmd FileType python nnoremap <Leader>r :! python3 %<CR>
+augroup END
 
 " leader s = write
 nnoremap <Leader>s :w<CR>
@@ -529,13 +541,17 @@ endfunc
 " iabbr <silent> if if ()<Left><C-R>=Eatchar('\s')<CR>
 
 " .,b = code block in Markdown
-autocmd FileType markdown iabbrev .,b ```<CR>```<ESC>kA<C-R>=Eatchar('\s')<CR>
+autocmd! FileType markdown iabbrev .,b ```<CR>```<ESC>kA<C-R>=Eatchar('\s')<CR>
 
 " add: fo = for of, fl = for loop, fi = for in
 
-" .,p = print
+" .,p = print statement
 " https://vonheikemen.github.io/devlog/tools/using-vim-abbreviations/
-autocmd FileType javascript iabbrev .,p console.log();<Left><Left><C-R>=Eatchar('\s')<CR>
-autocmd FileType markdown iabbrev .,p console.log();<Left><Left><C-R>=Eatchar('\s')<CR>
+augroup print_statement
+  autocmd!
+  autocmd FileType javascript iabbrev .,p console.log();<Left><Left><C-R>=Eatchar('\s')<CR>
+  autocmd FileType python iabbrev .,p print()<Left><C-R>=Eatchar('\s')<CR>
+  autocmd FileType markdown iabbrev .,p console.log();<Left><Left><C-R>=Eatchar('\s')<CR>
+augroup END
 
 " }}}
