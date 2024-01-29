@@ -365,13 +365,10 @@ endif
 nnoremap [b :bprevious<CR>zt
 nnoremap ]b :bnext<CR>zt
 
-" remap up and down to navigate wordwraps, in Insert, Normal, and Visual modes
-inoremap <up> <C-O>gk
-inoremap <down> <C-O>gj
-nnoremap <up> gk
-nnoremap <down> gj
-vnoremap <up> gk
-vnoremap <down> gj
+" gs = vsplit, in Normal mode
+" orignally had this as leader wv
+" TOUSE
+nnoremap gs :vsplit <CR>
 
 " H & L = start & end of line, in Normal, Visual, Select, Operator-pending modes
 noremap H ^
@@ -391,6 +388,14 @@ noremap U <C-r>
 
 " Y = yank to end of line, in Normal, Visual, Select, Operator-pending modes
 noremap Y y$
+
+" remap up and down to navigate wordwraps, in Insert, Normal, and Visual modes
+inoremap <up> <C-O>gk
+inoremap <down> <C-O>gj
+nnoremap <up> gk
+nnoremap <down> gj
+vnoremap <up> gk
+vnoremap <down> gj
 
 " using < and > keep selection, in Visual mode
 vmap > >gv
@@ -505,6 +510,11 @@ nnoremap <Leader>k :mks!<CR>
 " leader m = make current file
 nnoremap <Leader>m :make %<CR>
 
+" leader o, O = insert new line below and above without leaving Normal mode
+" TOUSE
+nnoremap <Leader>o o<Esc>0"_Dk$
+nnoremap <Leader>O O<Esc>0"_Dj$
+
 " leader p = fuzzy file finder
 nnoremap <Leader>p :find *
 
@@ -520,9 +530,6 @@ nnoremap <Leader>s :w<CR>
 
 " leader t = shell/terminal
 nnoremap <Leader>t :sh<CR>
-
-" leader wv = vsplit
-nnoremap <Leader>wv :vsplit 
 
 " leader z = open current split in own tab and keep cursor pos
 " https://vi.stackexchange.com/questions/36795/how-to-toggle-back-after-previous-view-when-using-only-command-on-vim

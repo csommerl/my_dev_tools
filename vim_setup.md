@@ -64,9 +64,18 @@ use plugins with nvim
 
 ## Keys to Remap
 
+Ctrl-enter
+Ctrl-space
 Function keys
+S
 Q
+X
 Z
+gm
+gr
+gx
+gy
+gz
 Home in Normal Mode
 End in Normal Mode
 - hyphen
