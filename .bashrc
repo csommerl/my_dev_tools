@@ -134,3 +134,4 @@ eval "$(oh-my-posh --init --shell bash --config ~/.poshthemes/mytheme2.omp.json)
 # Set vim as default editor
 export VISUAL=vim
 export EDITOR="$VISUAL"
+export PATH="$PATH:/home/curtis/.local/bin"

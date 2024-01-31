@@ -512,8 +512,8 @@ nnoremap <Leader>m :make %<CR>
 
 " leader o, O = insert new line below and above without leaving Normal mode
 " TOUSE
-nnoremap <Leader>o o<Esc>0"_Dk$
-nnoremap <Leader>O O<Esc>0"_Dj$
+nnoremap <Leader>o o<Esc>0"_Dk
+nnoremap <Leader>O O<Esc>0"_Dj
 
 " leader p = fuzzy file finder
 nnoremap <Leader>p :find *
