@@ -135,3 +135,8 @@ eval "$(oh-my-posh --init --shell bash --config ~/.poshthemes/mytheme2.omp.json)
 export VISUAL=vim
 export EDITOR="$VISUAL"
 export PATH="$PATH:/home/curtis/.local/bin"
+
+# Setup for zoxide
+eval "$(zoxide init bash)"
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
